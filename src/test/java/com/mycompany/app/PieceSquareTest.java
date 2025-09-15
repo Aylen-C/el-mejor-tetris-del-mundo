@@ -26,11 +26,18 @@ public class PieceSquareTest {
 
      @Test
      public void AsignaValores (){ 
+
+        String matriz [][] = new String [2][2];
      
-     matriz[0][0] = *; 
-     matriz[0][1]= *;
-     matriz[1][0]= *; 
-     matriz[1][1]= *; 
+     matriz[0][0] ="*"; 
+     matriz[0][1]= "*";
+     matriz[1][0]= "*"; 
+     matriz[1][1]= "*"; 
+
+     assertEquals("*", matriz[0][0]);
+     assertEquals("*", matriz[0][1]);
+     assertEquals("*", matriz[1][0]);
+     assertEquals("*", matriz[1][1]);
 
 }
 
