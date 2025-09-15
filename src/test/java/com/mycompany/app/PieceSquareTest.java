@@ -1,28 +1,27 @@
 package com.mycompany.app;
-import org.junit.Test;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 public class PieceSquareTest {
 
-
     @Test
     public void CreaPieza () {
-    int filas= 2;
+    int filas = 2;
     int columnas = 2; 
 
     int matriz [][]= new int [filas][columnas];
 
-    for (int i; i<filas; i++){
-        for (int j; j<columnas; j++){
+    for (int i = 0; i<filas; i++){
+        for (int j = 0; j<columnas; j++){
 
             assertEquals(0, matriz[i][j]);
         }
     }
     }
-
 
      @Test
      public void AsignaValores (){ 
@@ -42,6 +41,4 @@ public class PieceSquareTest {
 }
 
 
-
 }
-
