@@ -1,5 +1,4 @@
 package com.mycompany.app;
-
-public class Piece{
+public abstract class Piece{
     
 }

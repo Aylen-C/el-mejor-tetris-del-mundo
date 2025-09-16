@@ -39,4 +39,11 @@ public class PieceSquareTest {
      assertEquals("*", matriz[1][1]);
 
 }
+
+     @Test 
+     public void rotar (){
+        
+
+     }
+
 }
