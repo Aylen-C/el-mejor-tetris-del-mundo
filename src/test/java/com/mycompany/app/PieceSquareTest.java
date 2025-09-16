@@ -39,6 +39,4 @@ public class PieceSquareTest {
      assertEquals("*", matriz[1][1]);
 
 }
-
-
 }
