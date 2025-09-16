@@ -10,7 +10,7 @@ public class PieceTTest {
     @Test
     public void CreaPieza () {
     int filas = 2;
-    int columnas = 2; 
+    int columnas = 3; 
 
     int matriz [][]= new int [filas][columnas];
 
