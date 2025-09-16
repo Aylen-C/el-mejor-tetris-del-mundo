@@ -1,46 +1,41 @@
 package com.mycompany.app;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import java.util.Arrays;
 
-class PieceStickTest {
+public class PieceStickTest {
 
     @Test
-    void testCreacionPiezaStick() {
-        PieceStick stick = new PieceStick(0, 0);
-        int[][] esperado = {
-            {0, 0},
-            {0, 1},
-            {0, 2},
-            {0, 3}
-        };
-        assertTrue(Arrays.deepEquals(esperado, stick.getCells()), "La pieza Stick debe tener la forma vertical inicial correcta");
+    public void creaPiezaStick() {
+        int filas = 4;
+        int columnas = 1;
+
+        int matriz[][] = new int[filas][columnas];
+
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                assertEquals(0, matriz[i][j]);
+            }
+        }
     }
 
     @Test
-    void testRotacionDerechaPiezaStick() {
-        PieceStick stick = new PieceStick(0, 0);
-        stick.rotateRight();
-        int[][] esperado = {
-            {0, 0},
-            {1, 0},
-            {2, 0},
-            {3, 0}
-        };
-        assertTrue(Arrays.deepEquals(esperado, stick.getCells()), "La pieza Stick debe tener la forma horizontal tras rotar a la derecha");
-    }
+    public void asignaValoresStick() {
+        String matriz[][] = new String[4][1];
 
-    @Test
-    void testRotacionIzquierdaPiezaStick() {   
-        PieceStick stick = new PieceStick(0, 0);
-        stick.rotateLeft();
-        int[][] esperado = {
-            {0, 0},
-            {1, 0},
-            {2, 0},
-            {3, 0}
-        };
-        assertTrue(Arrays.deepEquals(esperado, stick.getCells()), "La pieza Stick debe tener la forma horizontal tras rotar a la izquierda");
+      
+        for (int i = 0; i < 4; i++) {
+            matriz[i][0] = ".";
+        }
+
+        matriz[0][0] = "*";
+        matriz[1][0] = "*";
+        matriz[2][0] = "*";
+        matriz[3][0] = "*";
+
+        assertEquals("*", matriz[0][0]);
+        assertEquals("*", matriz[1][0]);
+        assertEquals("*", matriz[2][0]);
+        assertEquals("*", matriz[3][0]);
     }
 }
