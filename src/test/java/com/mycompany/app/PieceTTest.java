@@ -28,13 +28,13 @@ public class PieceTTest {
         PieceT pieza = new PieceT();
         String [][] matriz = pieza.forma();
 
-        assertEquals("*", matriz[0][0]);
+        assertEquals("*", matriz[1][0]);
         assertEquals("*", matriz[0][1]);
-        assertEquals("*", matriz[0][2]);
+        assertEquals("*", matriz[2][1]);
         assertEquals("*", matriz[1][1]);
 
-        assertEquals(".", matriz[1][0]);
-        assertEquals(".", matriz[1][2]);
+        assertEquals(".", matriz[0][0]);
+        assertEquals(".", matriz[0][2]);
     }
 
     @Test
@@ -43,13 +43,13 @@ public class PieceTTest {
         pieza.rotateRight();
         String [][] matriz = pieza.forma();
 
-        assertEquals("*", matriz[0][0]);
+        assertEquals("*", matriz[0][2]);
         assertEquals("*", matriz[0][1]);
-        assertEquals("*", matriz[1][0]);
+        assertEquals("*", matriz[0][0]);
         assertEquals("*", matriz[1][1]);
 
-        assertEquals(".", matriz[2][0]);
-        assertEquals(".", matriz[2][1]);
+        assertEquals(".", matriz[1][2]);
+        assertEquals(".", matriz[1][0]);
     }
 
     @Test
