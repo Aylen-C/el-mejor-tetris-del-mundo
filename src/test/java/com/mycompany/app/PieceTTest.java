@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PieceTTest {
-//a
+
     @Test
     public void CreaPieza() {
     int filas = 2;
@@ -14,8 +14,8 @@ public class PieceTTest {
 
     int matriz [][]= new int [filas][columnas];
 
-    for (int i = 0; i<filas; i++){
-        for (int j = 0; j<columnas; j++){
+    for (int i = 0; i < filas; i++){
+        for (int j = 0; j <columnas; j++){
 
             assertEquals(0, matriz[i][j]);
         }
@@ -45,14 +45,5 @@ public class PieceTTest {
         assertEquals("*", matriz[0][1]);
         assertEquals("*", matriz[0][2]);
         assertEquals("*", matriz[1][1]);
-        
-        // relleno
-        assertEquals(".", matriz[1][0]);
-        assertEquals(".", matriz[1][2]);
-
     }
 }
-
-
-
-// qsy

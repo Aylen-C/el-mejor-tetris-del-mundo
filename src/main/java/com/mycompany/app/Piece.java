@@ -1,5 +1,50 @@
 package com.mycompany.app;
+
 public abstract class Piece{
+    int posicionActual = 0;
+
+
+    public void rotateRight(){
+        switch (posicionActual){
+
+//  0 = normal   -   1 = derecha   -   2 = abajo   -   3 = izquierda
+            case 0:
+                posicionActual = 1;   // normal -> derecha
+                break;
+
+            case 1:
+                posicionActual = 2;   // derecha -> abajo
+                break;
+
+            case 2:
+                posicionActual = 3;   // abajo -> izquierda
+                break;
+
+            case 3:
+                posicionActual = 0;   // izquierda -> normal
+                break;
+        }
+    }
     
-    
+
+    public void rotateLeft(){
+        switch (posicionActual){
+        
+            case 0:
+                posicionActual = 3;   // normal -> izquierda
+                break;
+
+            case 1:
+                posicionActual = 0;   // derecha -> normal
+                break;
+
+            case 2:
+                posicionActual = 1;   // abajo -> derecha
+                break;
+
+            case 3:
+                posicionActual = 2;   // izquierda -> abajo
+                break;
+        }
+    }
 }
