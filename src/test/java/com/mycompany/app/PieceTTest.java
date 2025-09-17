@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PieceTTest {
-//a
+
     @Test
     public void CreaPieza() {
     int filas = 2;
@@ -22,6 +22,74 @@ public class PieceTTest {
     }
     }
 
+
+    @Test
+    public void testNormal(){
+        PieceT pieza = new PieceT();
+        String [][] matriz = pieza.forma();
+
+        assertEquals("*", matriz[0][0]);
+        assertEquals("*", matriz[0][1]);
+        assertEquals("*", matriz[0][2]);
+        assertEquals("*", matriz[1][1]);
+
+        assertEquals(".", matriz[1][0]);
+        assertEquals(".", matriz[1][2]);
+    }
+
+    @Test
+    public void testDerecha(){
+        PieceT pieza = new PieceT();
+        pieza.rotateRight();
+        String [][] matriz = pieza.forma();
+
+        assertEquals("*", matriz[0][0]);
+        assertEquals("*", matriz[0][1]);
+        assertEquals("*", matriz[1][0]);
+        assertEquals("*", matriz[1][1]);
+
+        assertEquals(".", matriz[2][0]);
+        assertEquals(".", matriz[2][1]);
+    }
+
+    @Test
+    public void testRotarIzquierda() {
+        PieceT pieza = new PieceT();
+        pieza.rotateLeft();           // pasa a Izquierda (posicionActual = 3)
+        String[][] m = pieza.forma();
+
+        // verificar Izquierda
+        assertEquals(".", m[0][0]);
+        assertEquals("*", m[0][1]);
+        assertEquals("*", m[1][0]);
+        assertEquals("*", m[1][1]);
+        assertEquals(".", m[2][0]);
+        assertEquals("*", m[2][1]);
+    }
+
+    @Test
+    public void testRotarAbajo() {
+        PieceT pieza = new PieceT();
+        pieza.rotateRight();  // 0 -> 1
+        pieza.rotateRight();  // 1 -> 2 (Abajo)
+        String[][] m = pieza.forma();
+
+        // verificar Abajo
+        assertEquals(".", m[0][0]);
+        assertEquals("*", m[0][1]);
+        assertEquals(".", m[0][2]);
+        assertEquals("*", m[1][0]);
+        assertEquals("*", m[1][1]);
+        assertEquals("*", m[1][2]);
+    }
+
+}
+
+
+
+
+
+    /*
      @Test
      public void AsignaValores (){
         
@@ -52,7 +120,4 @@ public class PieceTTest {
 
     }
 }
-
-
-
-// qsy
+ */
