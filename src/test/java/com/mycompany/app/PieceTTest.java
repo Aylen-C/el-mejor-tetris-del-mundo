@@ -12,17 +12,83 @@ public class PieceTTest {
     int filas = 2;
     int columnas = 3;
 
-    int matriz [][]= new int [filas][columnas];
+        int matriz [][]= new int [filas][columnas];
 
-    for (int i = 0; i < filas; i++){
-        for (int j = 0; j <columnas; j++){
+        for (int i = 0; i < filas; i++){
+            for (int j = 0; j <columnas; j++){
 
-            assertEquals(0, matriz[i][j]);
+                assertEquals(0, matriz[i][j]);
+            }
         }
     }
+
+    @Test
+    public void testNormal(){
+        PieceT pieza = new PieceT();
+        String [][] matriz = pieza.forma();
+
+        assertEquals("*", matriz[0][0]);
+        assertEquals("*", matriz[0][1]);
+        assertEquals("*", matriz[0][2]);
+        assertEquals("*", matriz[1][1]);
+
+        assertEquals(".", matriz[1][0]);
+        assertEquals(".", matriz[1][2]);
     }
 
-     @Test
+    @Test
+    public void testDerecha(){
+        PieceT pieza = new PieceT();
+        pieza.rotateRight();
+        String [][] matriz = pieza.forma();
+
+        assertEquals("*", matriz[0][0]);
+        assertEquals("*", matriz[0][1]);
+        assertEquals("*", matriz[1][0]);
+        assertEquals("*", matriz[1][1]);
+
+        assertEquals(".", matriz[2][0]);
+        assertEquals(".", matriz[2][1]);
+    }
+
+    @Test
+    public void testRotarIzquierda() {
+        PieceT pieza = new PieceT();
+        pieza.rotateLeft();           // pasa a Izquierda (posicionActual = 3)
+        String[][] f = pieza.forma();
+
+        // verificar Izquierda
+        assertEquals(".", f[0][0]);
+        assertEquals("*", f[0][1]);
+        assertEquals("*", f[1][0]);
+        assertEquals("*", f[1][1]);
+        assertEquals(".", f[2][0]);
+        assertEquals("*", f[2][1]);
+    }
+
+    @Test
+    public void testRotarAbajo() {
+        PieceT pieza = new PieceT();
+        pieza.rotateRight();  // 0 -> 1
+        pieza.rotateRight();  // 1 -> 2 (Abajo)
+        String[][] f = pieza.forma();
+
+        // verificar Abajo
+        assertEquals(".", f[0][0]);
+        assertEquals("*", f[0][1]);
+        assertEquals(".", f[0][2]);
+        assertEquals("*", f[1][0]);
+        assertEquals("*", f[1][1]);
+        assertEquals("*", f[1][2]);
+    }
+
+}
+
+
+
+
+    /*
+    @Test
      public void AsignaValores (){
         
         String matriz [][] = new String [2][3];
@@ -47,3 +113,4 @@ public class PieceTTest {
         assertEquals("*", matriz[1][1]);
     }
 }
+ */

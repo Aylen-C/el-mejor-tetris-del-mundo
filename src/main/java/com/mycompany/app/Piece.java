@@ -3,11 +3,11 @@ package com.mycompany.app;
 public abstract class Piece{
     int posicionActual = 0;
 
-
     public void rotateRight(){
         switch (posicionActual){
 
 //  0 = normal   -   1 = derecha   -   2 = abajo   -   3 = izquierda
+
             case 0:
                 posicionActual = 1;   // normal -> derecha
                 break;
@@ -47,4 +47,9 @@ public abstract class Piece{
                 break;
         }
     }
+    
+    public abstract String[][] forma();  /* cada pieza implementa su propia forma y  
+                                            la devuelve segun su posicion actual
+                                            (0, 1, 2, 3)  */
+
 }
