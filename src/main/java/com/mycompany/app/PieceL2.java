@@ -1,30 +1,30 @@
 package com.mycompany.app;
 
-public class PieceL extends Piece {
+public class PieceL2 extends Piece {
     @Override
     public String[][] forma() {
         switch (posicionActual) {
-            case 0: // L normal
+            case 0: // L invertida normal
                 return new String[][] {
-                    {"*", ".", "."},
-                    {"*", ".", "."},
-                    {"*", "*", "."}
+                    {".", ".", "*"},
+                    {".", ".", "*"},
+                    {".", "*", "*"}
                 };
-            case 1: // L rotada derecha
+            case 1: // L invertida rotada derecha
                 return new String[][] {
                     {".", ".", "."},
                     {"*", "*", "*"},
-                    {"*", ".", "."}
+                    {".", ".", "*"}
                 };
-            case 2: // L rotada abajo
+            case 2: // L invertida rotada abajo
                 return new String[][] {
                     {"*", "*", "."},
-                    {".", "*", "."},
-                    {".", "*", "."}
+                    {"*", ".", "."},
+                    {"*", ".", "."}
                 };
-            case 3: // L rotada izquierda
+            case 3: // L invertida rotada izquierda
                 return new String[][] {
-                    {".", ".", "*"},
+                    {"*", ".", "."},
                     {"*", "*", "*"},
                     {".", ".", "."}
                 };
