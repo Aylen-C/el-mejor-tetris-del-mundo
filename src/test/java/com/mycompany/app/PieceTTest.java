@@ -1,86 +1,117 @@
 package com.mycompany.app;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
 
 public class PieceTTest {
-
+    
     @Test
     public void CreaPieza() {
-    int filas = 2;
-    int columnas = 3;
+        int filas = 3;
+        int columnas = 3;
 
-    int matriz [][]= new int [filas][columnas];
+        int matriz [][]= new int [filas][columnas];
 
-    for (int i = 0; i<filas; i++){
-        for (int j = 0; j<columnas; j++){
+        for (int i = 0; i < filas; i++){
+            for (int j = 0; j < columnas; j++){
 
-            assertEquals(0, matriz[i][j]);
+                assertEquals(0, matriz[i][j]);
+            }
         }
-    }
     }
 
 
     @Test
     public void testNormal(){
         PieceT pieza = new PieceT();
-        String [][] matriz = pieza.forma();
+        String [][] m = pieza.forma();
 
-        assertEquals("*", matriz[1][0]);
-        assertEquals("*", matriz[0][1]);
-        assertEquals("*", matriz[2][1]);
-        assertEquals("*", matriz[1][1]);
+        // FILA 1
+        assertEquals("*", m[0][0]);
+        assertEquals("*", m[1][0]);
+        assertEquals("*", m[2][0]);
 
-        assertEquals(".", matriz[0][0]);
-        assertEquals(".", matriz[0][2]);
+        // FILA 2
+        assertEquals(".", m[0][1]);
+        assertEquals("*", m[1][1]);
+        assertEquals(".", m[2][1]);
+        
+        // FIlA 3
+        assertEquals(".", m[0][2]);
+        assertEquals(".", m[1][2]);
+        assertEquals(".", m[2][2]);
+
+
+
+
     }
 
     @Test
     public void testDerecha(){
         PieceT pieza = new PieceT();
         pieza.rotateRight();
-        String [][] matriz = pieza.forma();
+        String [][] m = pieza.forma();
 
-        assertEquals("*", matriz[0][2]);
-        assertEquals("*", matriz[0][1]);
-        assertEquals("*", matriz[0][0]);
-        assertEquals("*", matriz[1][1]);
+        // FIlA 3
+        assertEquals(".", m[0][2]);
+        assertEquals(".", m[1][2]);
+        assertEquals("*", m[2][2]);
 
-        assertEquals(".", matriz[1][2]);
-        assertEquals(".", matriz[1][0]);
-    }
-
-    @Test
-    public void testRotarIzquierda() {
-        PieceT pieza = new PieceT();
-        pieza.rotateLeft();           // pasa a Izquierda (posicionActual = 3)
-        String[][] m = pieza.forma();
-
-        // verificar Izquierda
-        assertEquals(".", m[0][0]);
-        assertEquals("*", m[0][1]);
-        assertEquals("*", m[1][0]);
+        // FILA 2
+        assertEquals(".", m[0][1]);
         assertEquals("*", m[1][1]);
-        assertEquals(".", m[2][0]);
         assertEquals("*", m[2][1]);
+
+        // FILA 1
+        assertEquals(".", m[0][0]);
+        assertEquals(".", m[1][0]);
+        assertEquals("*", m[2][0]);
     }
 
     @Test
     public void testRotarAbajo() {
         PieceT pieza = new PieceT();
+        pieza.rotateLeft();           // pasa a Izquierda (posicionActual = 3)
+        String[][] m = pieza.forma();
+
+        // FIlA 3
+        assertEquals(".", m[0][2]);
+        assertEquals(".", m[1][2]);
+        assertEquals(".", m[2][2]);
+
+        // FILA 2
+        assertEquals(".", m[0][1]);
+        assertEquals("*", m[1][1]);
+        assertEquals(".", m[2][1]);
+
+        // FILA 1
+        assertEquals("*", m[0][0]);
+        assertEquals("*", m[1][0]);
+        assertEquals("*", m[2][0]);
+    }
+
+    @Test
+    public void testRotarIzquierda() {
+        PieceT pieza = new PieceT();
         pieza.rotateRight();  // 0 -> 1
         pieza.rotateRight();  // 1 -> 2 (Abajo)
         String[][] m = pieza.forma();
 
-        // verificar Abajo
-        assertEquals(".", m[0][0]);
+        // FIlA 3
+        assertEquals("*", m[0][2]);
+        assertEquals(".", m[1][2]);
+        assertEquals(".", m[2][2]);
+
+        // FILA 2
         assertEquals("*", m[0][1]);
-        assertEquals(".", m[0][2]);
-        assertEquals("*", m[1][0]);
         assertEquals("*", m[1][1]);
-        assertEquals("*", m[1][2]);
+        assertEquals(".", m[2][1]);
+
+        // FILA 1
+        assertEquals("*", m[0][0]);
+        assertEquals(".", m[1][0]);
+        assertEquals(".", m[2][0]);
     }
 
 }
