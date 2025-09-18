@@ -1,12 +1,21 @@
 package com.mycompany.app;
 
 public abstract class Piece implements IRotator {
-    int posicionActual = 0;
+    private int posicionActual = 0;
 
+    int getPosicionActual(){
+        return posicionActual;
+    }
+
+    void setPosicionActual(int nuevaPosicion){
+        posicionActual = nuevaPosicion;
+    }
+
+    int orientacionActual(){
+        return 4;
+    }
     public void rotateRight(){
-        switch (posicionActual){
-
-//  0 = normal   -   1 = derecha   -   2 = abajo   -   3 = izquierda
+        switch (posicionActual){//  0 = normal   -   1 = derecha   -   2 = abajo   -   3 = izquierda
 
             case 0: posicionActual = 1;   // normal -> derecha
                 break;

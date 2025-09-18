@@ -2,22 +2,40 @@ package com.mycompany.app;
 
 public class PieceStick extends Piece {
 
-
-@Override
-public String[][] forma() {
-    switch (posicionActual) {
-        case 0: //stick vertical
-        return new String[][] {
-            {"*"},
-            {"*"},
-            {"*"},
-            {"*"}
-        };
-        case 1: //stick horizontal
-        return new String[][] {
-            {"*", "*", "*", "*"}
-        };
+    @Override
+    public void rotateRight() {
+        if (getPosicionActual() == 0) {
+            setPosicionActual(1);
+        } else {
+            setPosicionActual(0);
+        }
     }
-    return null;
+
+    @Override
+    public void rotateLeft() {
+        if (getPosicionActual() == 0) {
+            setPosicionActual(1);
+        } else {
+            setPosicionActual(0);
+        }
+    }
+
+    @Override
+    public String[][] forma() {
+        if (getPosicionActual() == 0) {
+            return new String[][] {
+                {"*", "*", "*", "*"}
+            };
+        } else {
+            return new String[][] {
+                {"*"},
+                {"*"},
+                {"*"},
+                {"*"}
+            };
+        }
+    }
+
+
 }
-}
+
