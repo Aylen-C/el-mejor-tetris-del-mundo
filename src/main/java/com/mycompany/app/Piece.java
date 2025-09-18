@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public abstract class Piece{
+public abstract class Piece implements IRotator {
     int posicionActual = 0;
 
     public void rotateRight(){
