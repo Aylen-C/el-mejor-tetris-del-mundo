@@ -1,10 +1,10 @@
 package com.mycompany.app;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+
 
 public class BoardTest {
 
@@ -58,7 +58,9 @@ public class BoardTest {
 
     @Test
     public void FueraDelTablero(){
-    
+      
+      Board board = new Board(20,10);
+
          int [][] PieceSqueare= {
             {20,3} ,{20,4}, 
             {18,3}, {18,4}  
