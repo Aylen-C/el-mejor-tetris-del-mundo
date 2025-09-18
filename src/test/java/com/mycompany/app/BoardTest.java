@@ -1,6 +1,7 @@
 package com.mycompany.app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,7 @@ public class BoardTest {
          boolean ColocarPieza = board.Colocar(PieceSqueare);
          assertTrue(ColocarPieza, "La pieza esta dentro del tablero");
 
-        assertEquals(0,board.Colocar(19,3));
+        assertEquals(0, board.Colocar(19,3));
         assertEquals(0, board.Colocar(19,4));
         assertEquals(0, board.Colocar(18,3));
         assertEquals(0, board.Colocar(18,4));
@@ -57,9 +58,26 @@ public class BoardTest {
 
     @Test
     public void FueraDelTablero(){
+    
+         int [][] PieceSqueare= {
+            {20,3} ,{20,4}, 
+            {18,3}, {18,4}  
+         };
 
-        
+         boolean EstaAfuera = board.Afuera(PieceSqueare);
+         assertFalse(EstaAfuera, "La pieza no puede estar fuera del tablero");
 
+
+
+        int [][] PieceStick= {
+            {21,6} ,
+            {20,6}, 
+            {19,6},
+            {17,6}  
+         };
+
+         EstaAfuera = board.Afuera(PieceStick); //no es necesario volver a poner boolean 
+         assertTrue(EstaAfuera, "La pieza no puede estar fuera del tablero");
 
     }
 
