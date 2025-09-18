@@ -8,20 +8,16 @@ public abstract class Piece{
 
 //  0 = normal   -   1 = derecha   -   2 = abajo   -   3 = izquierda
 
-            case 0:
-                posicionActual = 1;   // normal -> derecha
+            case 0: posicionActual = 1;   // normal -> derecha
                 break;
 
-            case 1:
-                posicionActual = 2;   // derecha -> abajo
+            case 1: posicionActual = 2;   // derecha -> abajo
                 break;
 
-            case 2:
-                posicionActual = 3;   // abajo -> izquierda
+            case 2: posicionActual = 3;   // abajo -> izquierda
                 break;
 
-            case 3:
-                posicionActual = 0;   // izquierda -> normal
+            case 3: posicionActual = 0;   // izquierda -> normal
                 break;
         }
     }
@@ -29,21 +25,17 @@ public abstract class Piece{
 
     public void rotateLeft(){
         switch (posicionActual){
-        
-            case 0:
-                posicionActual = 3;   // normal -> izquierda
+
+            case 0: posicionActual = 3;   // normal -> izquierda
                 break;
 
-            case 1:
-                posicionActual = 0;   // derecha -> normal
+            case 1: posicionActual = 0;   // derecha -> normal
                 break;
 
-            case 2:
-                posicionActual = 1;   // abajo -> derecha
+            case 2: posicionActual = 1;   // abajo -> derecha
                 break;
 
-            case 3:
-                posicionActual = 2;   // izquierda -> abajo
+            case 3: posicionActual = 2;   // izquierda -> abajo
                 break;
         }
     }
