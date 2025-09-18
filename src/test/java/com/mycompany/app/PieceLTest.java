@@ -6,66 +6,62 @@ import org.junit.jupiter.api.Test;
 public class PieceLTest {
 
     @Test
-    public void creaPiezaL() {
-        int filas = 3;
-        int columnas = 2;
-
-        int matriz[][] = new int[filas][columnas]; 
-
-        for (int i = 0; i < filas; i++) { 
-            for (int j = 0; j < columnas; j++) {
-                assertEquals(0, matriz[i][j]);
-            }
-        }
+    public void testFormaLNormal() {
+        PieceL pieza = new PieceL();
+        pieza.posicionActual = 0;
+        String[][] esperado = {
+            {"*", ".", "."},
+            {"*", ".", "."},
+            {"*", "*", "."}
+        };
+        String[][] resultado = pieza.forma();
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                assertEquals(esperado[i][j], resultado[i][j]);
     }
 
     @Test
-    public void asignaValoresL() {
-        String matriz[][] = new String[3][2]; 
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 2; j++) {
-                matriz[i][j] = ".";
-            }
-        }
-
-        //  L derecha 
-        matriz[0][1] = "*";
-        matriz[1][1] = "*";
-        matriz[2][1] = "*";
-        matriz[2][0] = "*";
-
-        assertEquals("*", matriz[0][1]);
-        assertEquals("*", matriz[1][1]);
-        assertEquals("*", matriz[2][1]);
-        assertEquals("*", matriz[2][0]);
-
-        assertEquals(".", matriz[0][0]);
-        assertEquals(".", matriz[1][0]);
+    public void testFormaLRotadaDerecha() {
+        PieceL pieza = new PieceL();
+        pieza.posicionActual = 1;
+        String[][] esperado = {
+            {".", ".", "."},
+            {"*", "*", "*"},
+            {"*", ".", "."}
+        };
+        String[][] resultado = pieza.forma();
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                assertEquals(esperado[i][j], resultado[i][j]);
     }
 
     @Test
-    public void asignaValoresLIzquierda() {
-        String matriz[][] = new String[3][2];
+    public void testFormaLRotadaAbajo() {
+        PieceL pieza = new PieceL();
+        pieza.posicionActual = 2;
+        String[][] esperado = {
+            {"*", "*", "."},
+            {".", "*", "."},
+            {".", "*", "."}
+        };
+        String[][] resultado = pieza.forma();
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                assertEquals(esperado[i][j], resultado[i][j]);
+    }
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 2; j++) {
-                matriz[i][j] = ".";
-            }
-        }
-
-        // L izq
-        matriz[0][0] = "*";
-        matriz[1][0] = "*";
-        matriz[2][0] = "*";
-        matriz[2][1] = "*";
-
-        assertEquals("*", matriz[0][0]);
-        assertEquals("*", matriz[1][0]);
-        assertEquals("*", matriz[2][0]);
-        assertEquals("*", matriz[2][1]);
-
-        assertEquals(".", matriz[0][1]);
-        assertEquals(".", matriz[1][1]);
+    @Test
+    public void testFormaLRotadaIzquierda() {
+        PieceL pieza = new PieceL();
+        pieza.posicionActual = 3;
+        String[][] esperado = {
+            {".", ".", "*"},
+            {"*", "*", "*"},
+            {".", ".", "."}
+        };
+        String[][] resultado = pieza.forma();
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                assertEquals(esperado[i][j], resultado[i][j]);
     }
 }
