@@ -29,16 +29,16 @@ public class PieceTTest {
 
         // FILA 1
         assertEquals("*", m[0][0]);
-        assertEquals("*", m[1][0]);
-        assertEquals("*", m[2][0]);
+        assertEquals(".", m[1][0]);
+        assertEquals(".", m[2][0]);
 
         // FILA 2
-        assertEquals(".", m[0][1]);
+        assertEquals("*", m[0][1]);
         assertEquals("*", m[1][1]);
         assertEquals(".", m[2][1]);
         
         // FIlA 3
-        assertEquals(".", m[0][2]);
+        assertEquals("*", m[0][2]);
         assertEquals(".", m[1][2]);
         assertEquals(".", m[2][2]);
 
