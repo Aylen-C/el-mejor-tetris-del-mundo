@@ -56,12 +56,12 @@ public class BoardTest {
 
     @Test
     public void FueraDelTablero(){
-    
-         int [][] PieceSqueare= {
+    Board board = new Board(20, 10);
+         int [][] pieceSquareAfuera= {
             {20,3} ,{20,4}, 
             {18,3}, {18,4}  
          };
-         boolean EstaAfuera = board.Afuera(pieceSqueareAfuera);
+         boolean EstaAfuera = board.Afuera(pieceSquareAfuera);
          assertTrue(EstaAfuera, "Hay piezas que estan fuera del tablero");
 
         int [][] pieceStickAfuera= {
