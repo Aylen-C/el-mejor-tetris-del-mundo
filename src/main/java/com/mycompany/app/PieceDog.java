@@ -6,25 +6,25 @@ public class PieceDog extends Piece {
 
         switch (posicionActual) {
 
-            case 0: //dog derecha
+            case 0:
                 return new String[][] {
                     {".", "*", "*"},
                     {"*", "*", "."},
                     {".", ".", "."},
                 };
-            case 1: //dog derecha (rotado)
+            case 1:
                 return new String[][] {
                     {"*", ".", "."},
                     {"*", "*", "."},
                     {".", "*", "."},
                 };
-            case 2: //dog izquierda
+            case 2: 
                 return new String[][] {
                     {"*", "*", "."},
                     {".", "*", "*"},
                     {".", ".", "."},
                 };
-            case 3: //dog izquierda (rotado)
+            case 3: 
                 return new String[][] {
                     {".", "*", "."},
                     {"*", "*", "."},

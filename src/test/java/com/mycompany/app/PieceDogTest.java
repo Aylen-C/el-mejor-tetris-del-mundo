@@ -1,9 +1,7 @@
 package com.mycompany.app;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import org.junit.jupiter.api.Test;
 
 public class PieceDogTest {
 
@@ -23,20 +21,27 @@ public class PieceDogTest {
     }
 
      @Test
-     public void AsignaValores (){ 
+    public void asignaValoresDog() {
+        String matriz[][] = new String[2][3];
 
-        String matriz [][] = new String [2][3];
-     
-     matriz[0][0] ="*"; 
-     matriz[0][1]= "*";
-     matriz[1][1]= "*"; 
-     matriz[1][2]= "*"; 
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                matriz[i][j] = ".";
+            }
+        }
 
-     assertEquals("*", matriz[0][0]);
-     assertEquals("*", matriz[0][1]);
-     assertEquals("*", matriz[1][1]);
-     assertEquals("*", matriz[1][2]);
+        // dog normal (S)
+        matriz[0][1] = "*";
+        matriz[0][2] = "*";
+        matriz[1][0] = "*";
+        matriz[1][1] = "*";
 
-}
-
+        // comprueba la forma
+        assertEquals(".", matriz[0][0]);
+        assertEquals("*", matriz[0][1]);
+        assertEquals("*", matriz[0][2]);
+        assertEquals("*", matriz[1][0]);
+        assertEquals("*", matriz[1][1]);
+        assertEquals(".", matriz[1][2]);
+    }
 }
