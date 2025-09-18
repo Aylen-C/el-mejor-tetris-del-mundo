@@ -28,8 +28,7 @@ public class PieceT extends Piece{
                     {"*", "*", "*"},
                 };
 
-            case 3:
-                // Izquierda
+            case 3: // Izquierda
                 return new String[][] {
                     {"*", ".", "."},
                     {"*", "*", "."},
