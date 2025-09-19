@@ -6,6 +6,9 @@ public class Board {
     private int columnas;
     private int [][] board; 
 
+    public boolean moveDown() {
+        // mueve la pieza hacia abajo
+    }
     
     public Board(int filas, int columnas) {
         this.filas = filas;
@@ -13,7 +16,7 @@ public class Board {
         this.board = new int [filas][columnas];
     }
 
-    private boolean estaFuera(int fila, int columna) {
+    private boolean estaFuera(int fila, int columna) { 
         return fila < 0 || fila >= filas || columna < 0 || columna >= columnas;
     }
 
@@ -45,7 +48,7 @@ public class Board {
 
     // dice si por lo menos una pieza está fuera
     public boolean Afuera(int[][] pieza) {
-        for (int[] posicion : pieza) {
+        for (int[] posicion : pieza) { // 
             int fila = posicion[0];
             int columna = posicion[1];
             if (estaFuera(fila, columna)) 
