@@ -93,7 +93,7 @@ public class BoardTest {
       };
     
        //boardCaida.moveDown();
-         assertEquals(0, boardCaida.Colocar(pieceSquare));
+         assertTrue(0, boardCaida.Colocar(pieceSquare));
       
       while (boardCaida.moveDown()){
          
