@@ -8,7 +8,7 @@ public class PieceLTest {
     @Test
     public void testFormaLNormal() {
         PieceL pieza = new PieceL();
-        pieza.posicionActual = 0;
+        pieza.setPosicionActual(0);
         String[][] esperado = {
             {"*", ".", "."},
             {"*", ".", "."},
@@ -23,7 +23,7 @@ public class PieceLTest {
     @Test
     public void testFormaLRotadaDerecha() {
         PieceL pieza = new PieceL();
-        pieza.posicionActual = 1;
+        pieza.setPosicionActual(1);
         String[][] esperado = {
             {".", ".", "."},
             {"*", "*", "*"},
@@ -38,7 +38,7 @@ public class PieceLTest {
     @Test
     public void testFormaLRotadaAbajo() {
         PieceL pieza = new PieceL();
-        pieza.posicionActual = 2;
+        pieza.setPosicionActual(2);
         String[][] esperado = {
             {"*", "*", "."},
             {".", "*", "."},
@@ -53,7 +53,7 @@ public class PieceLTest {
     @Test
     public void testFormaLRotadaIzquierda() {
         PieceL pieza = new PieceL();
-        pieza.posicionActual = 3;
+        pieza.setPosicionActual(3);
         String[][] esperado = {
             {".", ".", "*"},
             {"*", "*", "*"},

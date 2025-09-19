@@ -7,7 +7,7 @@ public class PieceL2Test {
     @Test
     public void testFormaL2Normal() {
         PieceL2 pieza = new PieceL2();
-        pieza.posicionActual = 0;
+        pieza.setPosicionActual(0);
         String[][] esperado = {
             {".", ".", "*"},
             {".", ".", "*"},
@@ -22,7 +22,7 @@ public class PieceL2Test {
     @Test
     public void testFormaL2RotadaDerecha() {
         PieceL2 pieza = new PieceL2();
-        pieza.posicionActual = 1;
+        pieza.setPosicionActual(1);
         String[][] esperado = {
             {".", ".", "."},
             {"*", "*", "*"},
@@ -37,7 +37,7 @@ public class PieceL2Test {
     @Test
     public void testFormaL2RotadaAbajo() {
         PieceL2 pieza = new PieceL2();
-        pieza.posicionActual = 2;
+        pieza.setPosicionActual(2);
         String[][] esperado = {
             {"*", "*", "."},
             {"*", ".", "."},
@@ -52,7 +52,7 @@ public class PieceL2Test {
     @Test
     public void testFormaL2RotadaIzquierda() {
         PieceL2 pieza = new PieceL2();
-        pieza.posicionActual = 3;
+        pieza.setPosicionActual(3);
         String[][] esperado = {
             {"*", ".", "."},
             {"*", "*", "*"},
@@ -64,4 +64,3 @@ public class PieceL2Test {
                 assertEquals(esperado[i][j], resultado[i][j]);
     }
 }
-

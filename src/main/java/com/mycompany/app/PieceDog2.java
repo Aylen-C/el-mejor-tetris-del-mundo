@@ -1,24 +1,25 @@
 package com.mycompany.app;
 
 public class PieceDog2 extends Piece {
-        @Override
+    @Override
     public void rotateRight() {
-        posicionActual++;
-        if (posicionActual > 3) {
-            posicionActual = 0;
+        setPosicionActual(getPosicionActual() + 1);
+        if (getPosicionActual() > 3) {
+            setPosicionActual(0);
         }
     }
 
     @Override
     public void rotateLeft() {
-        posicionActual--;
-        if (posicionActual < 0) {
-            posicionActual = 3;
+        setPosicionActual(getPosicionActual() - 1);
+        if (getPosicionActual() < 0) {
+            setPosicionActual(3);
         }
     }
+
     @Override
     public String[][] forma() {
-        switch (posicionActual) {
+        switch (getPosicionActual()) {
             case 0: 
                 return new String[][] {
                     {"*", "*", "."},

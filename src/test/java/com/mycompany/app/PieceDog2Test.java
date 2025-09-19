@@ -8,7 +8,7 @@ public class PieceDog2Test {
     @Test
     public void formaHorizontal() {
         PieceDog2 pieza = new PieceDog2();
-        pieza.posicionActual = 0;
+        pieza.setPosicionActual(0);
         String[][] esperado = {
             {"*", "*", "."},
             {".", "*", "*"},
@@ -23,7 +23,7 @@ public class PieceDog2Test {
     @Test
     public void formaVertical() {
         PieceDog2 pieza = new PieceDog2();
-        pieza.posicionActual = 1;
+        pieza.setPosicionActual(1);
         String[][] esperado = {
             {".", "*", "."},
             {"*", "*", "."},
@@ -38,7 +38,7 @@ public class PieceDog2Test {
     @Test
     public void formaHorizontalInvertida() {
         PieceDog2 pieza = new PieceDog2();
-        pieza.posicionActual = 2;
+        pieza.setPosicionActual(2);
         String[][] esperado = {
             {".", ".", "."},
             {"*", "*", "."},
@@ -53,7 +53,7 @@ public class PieceDog2Test {
     @Test
     public void formaVerticalInvertida() {
         PieceDog2 pieza = new PieceDog2();
-        pieza.posicionActual = 3;
+        pieza.setPosicionActual(3);
         String[][] esperado = {
             {"*", ".", "."},
             {"*", "*", "."},

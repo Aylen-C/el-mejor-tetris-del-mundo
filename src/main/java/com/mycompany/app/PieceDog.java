@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceL extends Piece {
+public class PieceDog extends Piece {
     @Override
     public void rotateRight() {
         setPosicionActual(getPosicionActual() + 1);
@@ -20,29 +20,29 @@ public class PieceL extends Piece {
     @Override
     public String[][] forma() {
         switch (getPosicionActual()) {
-            case 0: // L normal
+            case 0: 
                 return new String[][] {
-                    {"*", ".", "."},
-                    {"*", ".", "."},
-                    {"*", "*", "."}
-                };
-            case 1: // L rotada derecha
-                return new String[][] {
-                    {".", ".", "."},
-                    {"*", "*", "*"},
-                    {"*", ".", "."}
-                };
-            case 2: // L rotada abajo
-                return new String[][] {
+                    {".", "*", "*"},
                     {"*", "*", "."},
-                    {".", "*", "."},
+                    {".", ".", "."}
+                };
+            case 1: 
+                return new String[][] {
+                    {"*", ".", "."},
+                    {"*", "*", "."},
                     {".", "*", "."}
                 };
-            case 3: // L rotada izquierda
+            case 2: 
                 return new String[][] {
-                    {".", ".", "*"},
-                    {"*", "*", "*"},
-                    {".", ".", "."}
+                    {".", ".", "."},
+                    {".", "*", "*"},
+                    {"*", "*", "."}
+                };
+            case 3: 
+                return new String[][] {
+                    {".", "*", "."},
+                    {".", "*", "*"},
+                    {".", ".", "*"}
                 };
         }
         return null;
