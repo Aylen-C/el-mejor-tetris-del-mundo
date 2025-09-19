@@ -103,7 +103,9 @@ public class BoardTest {
       assertTrue(BajarPieza, "La pieza bajo en el tablero");*/
 
 
-     for (int filas=0; filas<19; filas++){
+
+      // prueba con Square
+     for (int filas=0; filas<20; filas++){
 
          for (int columnas=0; columnas<10; columnas++){
             if ((filas==18 || filas==19) && (columnas==1 || columnas==2)){
