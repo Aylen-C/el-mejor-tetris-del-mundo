@@ -6,7 +6,7 @@ public class Board {
     private int columnas;
     private int [][] board;
     private int [][] piezaActual; // la pieza que está cayendo
-    private int cantidadBloques;
+    private int cantidadBloques;// cantidad de bloques de la pieza actual
  
 
     public boolean Colocar(int[][] pieza, int cantidadBloques) {
@@ -23,7 +23,7 @@ public class Board {
     }
 
 
-    // pone una nueva pieza activa (y la cantidad de bloques que tiene)
+    // elige una nueva pieza (y la cantidad de bloques que tiene)
     public void setPiezaActual(int[][] nuevaPieza, int cantidadBloques) {
         this.piezaActual = nuevaPieza;
         this.cantidadBloques = cantidadBloques;
@@ -63,19 +63,20 @@ public class Board {
     public boolean moveDown() {
         if (piezaActual == null) return false;
         // Verifica si la pieza puede bajar
-        for (int i = 0; i < cantidadBloques; i++) {
-            int filaActual = piezaActual[i][0];
+
+        for (int i = 0; i < cantidadBloques; i++) {// recorre cada bloque
+            int filaActual = piezaActual[i][0]; 
             int columnaActual = piezaActual[i][1];
-            int filaAbajo = filaActual + 1;
-            if (filaAbajo >= filas || board[filaAbajo][columnaActual] == 1) {
-                Colocar(piezaActual);
-                piezaActual = null;
-                return false;
+            int filaAbajo = filaActual + 1; // calcula fila debajo de la pieza
+            if (filaAbajo >= filas || board[filaAbajo][columnaActual] == 1) { // esta afuera u ocupada
+                Colocar(piezaActual); // fija pieza
+                piezaActual = null; // ya no hay pieza activa
+                return false; // no puede bajar
             }
         }
         // Si puede, baja todos los bloques
         for (int i = 0; i < cantidadBloques; i++) {
-            piezaActual[i][0]++;
+            piezaActual[i][0]++; //baja una fila
         }
         return true;
     }

@@ -81,7 +81,7 @@ public class BoardTest {
          {2,1}, {2,2}  
       };
     
-      // "activa" la pieza antes de dejarla caer
+      // elige la pieza antes de dejarla caer
       board.setPiezaActual(pieceSquare, 4);
 
       while (board.moveDown()) {
@@ -114,7 +114,7 @@ public class BoardTest {
          {0,6}, {1,6}, {2,6}, {3,6}
       };
 
-      // "activa" la pieza antes de dejarla caer
+      // elige la pieza antes de dejarla caer
       board.setPiezaActual(pieceStick, 4);
 
       while (board.moveDown()) {
