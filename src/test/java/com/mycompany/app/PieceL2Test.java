@@ -50,17 +50,32 @@ public class PieceL2Test {
     }
 
     @Test
-    public void testFormaL2RotadaIzquierda() {
+    public void noPuedeDescenderCuandoHayObstaculo() {
         PieceL2 pieza = new PieceL2();
-        pieza.setPosicionActual(3);
-        String[][] esperado = {
-            {"*", ".", "."},
-            {"*", "*", "*"},
-            {".", ".", "."}
+        pieza.setPosicionActual(0);
+        String[][] tablero = {
+            {".", ".", ".", ".", "."},
+            {".", ".", ".", ".", "."},
+            {"*", "*", "*", "*", "*"},
+            {".", ".", ".", ".", "."},
+            {".", ".", ".", ".", "."}
         };
-        String[][] resultado = pieza.forma();
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                assertEquals(esperado[i][j], resultado[i][j]);
+        boolean puedeBajar = pieza.puedeDescender(tablero, 1, 2);
+        assertEquals(false, puedeBajar);
     }
+
+@Test
+public void noPuedeRotarSiChocaConOtraPieza() {
+    PieceL2 pieza = new PieceL2();
+    pieza.setPosicionActual(0);
+    String[][] tablero = {
+        {".", ".", ".", ".", "."},
+        {".", ".", ".", ".", "."},
+        {".", ".", ".", "*", "."}, 
+        {".", ".", ".", ".", "."},
+        {".", ".", ".", ".", "."}
+    };
+    boolean puedeRotar = pieza.puedeRotar(tablero, 1, 2);
+    assertEquals(false, puedeRotar);
+}
 }

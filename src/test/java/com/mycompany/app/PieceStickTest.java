@@ -38,4 +38,28 @@ public class PieceStickTest {
         assertEquals("*", matriz[2][0]);
         assertEquals("*", matriz[3][0]);
     }
+        @Test
+    public void noPuedeDescenderCuandoHayObstaculo() {
+        PieceStick pieza = new PieceStick();
+        pieza.setPosicionActual(1); // vertical
+        String[][] tablero = new String[5][1];
+        for (int i = 0; i < 5; i++)
+            tablero[i][0] = ".";
+        tablero[4][0] = "*";
+        boolean puedeBajar = pieza.puedeDescender(tablero, 0, 0);
+        assertEquals(false, puedeBajar);
+    }
+
+    @Test
+    public void noPuedeRotarSiChocaConOtraPieza() {
+        PieceStick pieza = new PieceStick();
+        pieza.setPosicionActual(1); // vertical
+        String[][] tablero = new String[1][4];
+        for (int j = 0; j < 4; j++)
+            tablero[0][j] = ".";
+
+        tablero[0][2] = "*";
+        boolean puedeRotar = pieza.puedeRotar(tablero, 0, 0);
+        assertEquals(false, puedeRotar);
+    }
 }
