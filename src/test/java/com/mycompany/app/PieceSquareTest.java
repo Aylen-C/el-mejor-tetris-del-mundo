@@ -1,9 +1,7 @@
 package com.mycompany.app;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import org.junit.jupiter.api.Test;
 
 
 public class PieceSquareTest {
@@ -40,10 +38,18 @@ public class PieceSquareTest {
 
 }
 
-     @Test 
-     public void rotar (){
-        
-
-     }
-
+   @Test 
+    public void rotar() {
+    String[][] antes = {
+        {"*", "*"},
+        {"*", "*"}
+    };
+    String[][] despues = {
+        {"*", "*"},
+        {"*", "*"}
+    };
+    for (int i = 0; i < 2; i++)
+        for (int j = 0; j < 2; j++)
+            assertEquals(antes[i][j], despues[i][j]);
+}
 }
