@@ -4,58 +4,79 @@ public class Board {
 
     private int filas; 
     private int columnas;
-    private int [][] board; 
+    private int [][] board;
+    private int [][] piezaActual; // la pieza que está cayendo
+    private int cantidadBloques;
+ 
 
-    public boolean moveDown() {
-        return false; // mueve la pieza hacia abajo
+    public boolean Colocar(int[][] pieza, int cantidadBloques) {
+        this.cantidadBloques = cantidadBloques;
+        return Colocar(pieza);
     }
-    
+
     public Board(int filas, int columnas) {
         this.filas = filas;
         this.columnas = columnas;
         this.board = new int [filas][columnas];
+        this.piezaActual = null; // al inicio no hay pieza en el tablero
+        this.cantidadBloques = 0;
     }
 
-    private boolean estaFuera(int fila, int columna) { 
-        return fila < 0 || fila >= filas || columna < 0 || columna >= columnas;
+
+    // pone una nueva pieza activa (y la cantidad de bloques que tiene)
+    public void setPiezaActual(int[][] nuevaPieza, int cantidadBloques) {
+        this.piezaActual = nuevaPieza;
+        this.cantidadBloques = cantidadBloques;
     }
 
-    // pone una pieza y marca con un 1 los lugares ocupados
-    // devuelve true si todas las piezas están dentro
+
     public boolean Colocar(int[][] pieza) {
 
         // valida que la pieza no se salga del tablero
-        for (int[] posicion : pieza) { // 
-            int fila = posicion[0]; // 
-            int columna = posicion[1];//
-            if (estaFuera(fila, columna))
-            return false;
+        for (int i = 0; i < cantidadBloques; i++) {
+            int fila = pieza[i][0];
+            int columna = pieza[i][1];
+            if (estaFuera(fila, columna)) return false;
         }
+
         // colocar la pieza en el tablero y marca con un 1 si los lugares estan bien
-        for (int[] posicion : pieza) {
-            int fila = posicion[0];
-            int columna = posicion[1]; 
+        for (int i = 0; i < cantidadBloques; i++) {
+            int fila = pieza[i][0];
+            int columna = pieza[i][1];
             board[fila][columna] = 1;
         }
         return true;
     }
 
-    public int Colocar(int fila, int columna) { // pregunta el estado de una celda
+    public int getCelda(int fila, int columna) { // pregunta el estado de una celda
         if (estaFuera(fila, columna))
-        return -1;      // fuera del tablero
+            return -1;      // fuera del tablero
         return board[fila][columna];
     }
 
-    // dice si por lo menos una pieza está fuera
-    public boolean Afuera(int[][] pieza) {
-        for (int[] posicion : pieza) { // 
-            int fila = posicion[0];
-            int columna = posicion[1];
-            if (estaFuera(fila, columna)) 
-            
-            return true; // una pieza está fuera
+    // devuelve true si la celda está fuera del tablero
+    private boolean estaFuera(int fila, int columna) {
+        return (fila < 0 || fila >= filas || columna < 0 || columna >= columnas);
+    }
+    
+        // Baja la pieza actual una fila si puede
+    public boolean moveDown() {
+        if (piezaActual == null) return false;
+        // Verifica si la pieza puede bajar
+        for (int i = 0; i < cantidadBloques; i++) {
+            int filaActual = piezaActual[i][0];
+            int columnaActual = piezaActual[i][1];
+            int filaAbajo = filaActual + 1;
+            if (filaAbajo >= filas || board[filaAbajo][columnaActual] == 1) {
+                Colocar(piezaActual);
+                piezaActual = null;
+                return false;
+            }
         }
-        return false; // todas las piezas están dentro
-
+        // Si puede, baja todos los bloques
+        for (int i = 0; i < cantidadBloques; i++) {
+            piezaActual[i][0]++;
+        }
+        return true;
     }
 }
