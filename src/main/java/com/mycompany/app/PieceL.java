@@ -1,9 +1,21 @@
 package com.mycompany.app;
 
-<<<<<<< HEAD
-public class PieceL extends Piece{
-=======
 public class PieceL extends Piece {
+        @Override
+    public void rotateRight() {
+        posicionActual++;
+        if (posicionActual > 3) {
+            posicionActual = 0;
+        }
+    }
+
+    @Override
+    public void rotateLeft() {
+        posicionActual--;
+        if (posicionActual < 0) {
+            posicionActual = 3;
+        }
+    }
     @Override
     public String[][] forma() {
         switch (posicionActual) {
@@ -34,5 +46,4 @@ public class PieceL extends Piece {
         }
         return null;
     }
->>>>>>> b21b4d519d60fd47384886d17df87557ea6dce59
 }

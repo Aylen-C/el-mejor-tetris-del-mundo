@@ -1,7 +1,7 @@
 package com.mycompany.app;
 
 public abstract class Piece implements IRotator {
-    private int posicionActual = 0;
+    protected int posicionActual = 0;
 
     int getPosicionActual(){
         return posicionActual;
