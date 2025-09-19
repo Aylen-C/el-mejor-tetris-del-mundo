@@ -52,4 +52,27 @@ public class PieceSquareTest {
         for (int j = 0; j < 2; j++)
             assertEquals(antes[i][j], despues[i][j]);
 }
+ @Test
+    public void noPuedeDescenderCuandoHayObstaculo() {
+        PieceSquare pieza = new PieceSquare();
+        String[][] tablero = new String[4][4];
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                tablero[i][j] = ".";
+        tablero[2][1] = "*";
+        tablero[2][0] = "*";
+        boolean puedeBajar = pieza.puedeDescender(tablero, 0, 0);
+        assertEquals(false, puedeBajar);
+    }
+
+    @Test
+    public void puedeRotarSiempre() {
+        PieceSquare pieza = new PieceSquare();
+        String[][] tablero = new String[4][4];
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                tablero[i][j] = ".";
+        boolean puedeRotar = pieza.puedeRotar(tablero, 0, 0);
+        assertEquals(true, puedeRotar);
+    }
 }

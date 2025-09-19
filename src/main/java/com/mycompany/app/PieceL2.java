@@ -20,25 +20,25 @@ public class PieceL2 extends Piece {
     @Override
     public String[][] forma() {
         switch (getPosicionActual()) {
-            case 0: // L invertida normal
+            case 0:
                 return new String[][] {
                     {".", ".", "*"},
                     {".", ".", "*"},
                     {".", "*", "*"}
                 };
-            case 1: // L invertida rotada derecha
+            case 1:
                 return new String[][] {
                     {".", ".", "."},
                     {"*", "*", "*"},
                     {".", ".", "*"}
                 };
-            case 2: // L invertida rotada abajo
+            case 2:
                 return new String[][] {
                     {"*", "*", "."},
                     {"*", ".", "."},
                     {"*", ".", "."}
                 };
-            case 3: // L invertida rotada izquierda
+            case 3:
                 return new String[][] {
                     {"*", ".", "."},
                     {"*", "*", "*"},
@@ -46,5 +46,67 @@ public class PieceL2 extends Piece {
                 };
         }
         return null;
+    }
+
+    @Override
+    public boolean puedeDescender(String[][] tablero, int fila, int columna) {
+        String[][] formaActual = forma();
+        int alto = formaActual.length;
+        int ancho = formaActual[0].length;
+
+        if (fila + alto >= tablero.length) {
+            return false;
+        }
+
+        for (int i = 0; i < alto; i++) {
+            for (int j = 0; j < ancho; j++) {
+                if (formaActual[i][j].equals("*")) {
+                    int abajo = fila + i + 1;
+                    int col = columna + j;
+                    if (abajo >= tablero.length || col < 0 || col >= tablero[0].length) {
+                        return false;
+                    }
+                    if (!tablero[abajo][col].equals(".")) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean puedeRotar(String[][] tablero, int fila, int columna) {
+        int originalPosicion = getPosicionActual();
+        int nuevaPosicion = originalPosicion + 1;
+        if (nuevaPosicion > 3) {
+            nuevaPosicion = 0;
+        }
+        setPosicionActual(nuevaPosicion);
+        String[][] formaRotada = forma();
+        setPosicionActual(originalPosicion);
+
+        int alto = formaRotada.length;
+        int ancho = formaRotada[0].length;
+
+        if (fila + alto > tablero.length || columna + ancho > tablero[0].length) {
+            return false;
+        }
+
+        for (int i = 0; i < alto; i++) {
+            for (int j = 0; j < ancho; j++) {
+                if (formaRotada[i][j].equals("*")) {
+                    int f = fila + i;
+                    int c = columna + j;
+                    if (f >= tablero.length || c < 0 || c >= tablero[0].length) {
+                        return false;
+                    }
+                    if (!tablero[f][c].equals(".")) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

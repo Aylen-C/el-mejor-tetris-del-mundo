@@ -44,4 +44,33 @@ public class PieceDogTest {
         assertEquals("*", matriz[1][1]);
         assertEquals(".", matriz[1][2]);
     }
+     @Test
+    public void noPuedeDescenderCuandoHayObstaculo() {
+        PieceDog pieza = new PieceDog();
+        pieza.setPosicionActual(0);
+        String[][] tablero = {
+            {".", ".", ".", ".", "."},
+            {".", ".", ".", ".", "."},
+            {"*", "*", "*", "*", "*"},
+            {".", ".", ".", ".", "."},
+            {".", ".", ".", ".", "."}
+        };
+        boolean puedeBajar = pieza.puedeDescender(tablero, 1, 1);
+        assertEquals(false, puedeBajar);
+    }
+
+    @Test
+    public void noPuedeRotarSiChocaConOtraPieza() {
+        PieceDog pieza = new PieceDog();
+        pieza.setPosicionActual(0);
+        String[][] tablero = {
+            {".", ".", ".", ".", "."},
+            {".", "*", ".", ".", "."},
+            {".", ".", ".", ".", "."},
+            {".", ".", ".", ".", "."},
+            {".", ".", ".", ".", "."}
+        };
+        boolean puedeRotar = pieza.puedeRotar(tablero, 1, 1);
+        assertEquals(false, puedeRotar);
+    }
 }

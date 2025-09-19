@@ -1,7 +1,7 @@
 package com.mycompany.app;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 
 public class PieceTTest {
@@ -110,7 +110,33 @@ public class PieceTTest {
         assertEquals(".", m[2][1]);
         assertEquals(".", m[2][2]);
     }
+ @Test
+    public void noPuedeDescenderCuandoHayObstaculo() {
+        PieceT pieza = new PieceT();
+        pieza.setPosicionActual(0);
+        String[][] tablero = new String[5][5];
+        for (int i = 0; i < 5; i++)
+            for (int j = 0; j < 5; j++)
+                tablero[i][j] = ".";
+        tablero[2][0] = "*";
+        tablero[2][1] = "*";
+        tablero[2][2] = "*";
+        boolean puedeBajar = pieza.puedeDescender(tablero, 0, 0);
+        assertEquals(false, puedeBajar);
+    }
 
+    @Test
+    public void noPuedeRotarSiChocaConOtraPieza() {
+        PieceT pieza = new PieceT();
+        pieza.setPosicionActual(0);
+        String[][] tablero = new String[5][5];
+        for (int i = 0; i < 5; i++)
+            for (int j = 0; j < 5; j++)
+                tablero[i][j] = ".";
+        tablero[1][2] = "*";
+        boolean puedeRotar = pieza.puedeRotar(tablero, 0, 0);
+        assertEquals(false, puedeRotar);
+    }
 }
 
 

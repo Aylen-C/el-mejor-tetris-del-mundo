@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceSquare extends Piece{
+public class PieceSquare extends Piece {
     
     @Override
     public void rotateRight() { // no rota
@@ -17,5 +17,20 @@ public class PieceSquare extends Piece{
             {"*", "*"},
             {"*", "*"}
         };
+    }
+
+    @Override
+    public boolean puedeDescender(String[][] tablero, int fila, int columna) {
+
+        if (fila + 2 >= tablero.length) {
+            return false;
+        }
+  
+        return tablero[fila + 2][columna].equals(".") && tablero[fila + 2][columna + 1].equals(".");
+    }
+
+    @Override
+    public boolean puedeRotar(String[][] tablero, int fila, int columna) {
+        return true;
     }
 }
