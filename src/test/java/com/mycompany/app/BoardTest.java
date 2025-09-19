@@ -72,7 +72,7 @@ public class BoardTest {
 
 
    @Test
-   public void CaidaLibre(){
+   public void CaidaLibreSquare(){
 
       Board board = new Board(20, 10);
 
@@ -81,7 +81,7 @@ public class BoardTest {
          {2,1}, {2,2}  
       };
     
-      // Activo la pieza antes de dejarla caer
+      // "activa" la pieza antes de dejarla caer
       board.setPiezaActual(pieceSquare, 4);
 
       while (board.moveDown()) {
@@ -92,16 +92,51 @@ public class BoardTest {
      for (int filas = 0; filas < 20; filas++){
          for (int columnas = 0; columnas < 10; columnas++){
             if ((filas == 18 || filas == 19) && (columnas == 1 || columnas == 2)){
-               assertEquals(1, board.getCelda(filas, columnas)); //[filas][columnas]);
+               assertEquals(1, board.getCelda(filas, columnas));
+               // la pieza llegó al fondo
             }
             else{
-               assertEquals(0, board.getCelda(filas, columnas)); //[filas][columnas]);
+               assertEquals(0, board.getCelda(filas, columnas));
+               // las demás celdas están vacías
             }
          }
    
       }
    }
-/* */
+
+
+   @Test
+   public void CaidaLibreStick(){
+
+      Board board = new Board(20, 10);
+
+      int [][] pieceStick = {
+         {0,6}, {1,6}, {2,6}, {3,6}
+      };
+
+      // "activa" la pieza antes de dejarla caer
+      board.setPiezaActual(pieceStick, 4);
+
+      while (board.moveDown()) {
+         // La pieza se mueve hacia abajo
+      }    
+      
+     for (int filas = 0; filas < 20; filas++){
+         for (int columnas = 0; columnas < 10; columnas++){
+            if ((filas >= 16 && filas <= 19) && (columnas == 6)){
+               assertEquals(1, board.getCelda(filas, columnas));
+               // la pieza llegó al fondo
+            }
+            else{
+               assertEquals(0, board.getCelda(filas, columnas));
+               // las demás celdas están vacías
+            }
+         }
+   
+      }
+   }
+
+
    @Test
    public void BoardClock(){
 
@@ -132,10 +167,11 @@ public class BoardTest {
       for (int filas = 0; filas < 20; filas++) {
          for (int columnas = 0; columnas < 10; columnas++) {
             if ((filas == 18 || filas == 19) && (columnas == 1 || columnas == 2)) {
-               assertEquals(1, board.getCelda(filas, columnas)); //[filas][columnas]);
+               assertEquals(1, board.getCelda(filas, columnas)); 
+               // la pieza llegó al fondo
             }
             else{
-               assertEquals(0, board.getCelda(filas, columnas)); //[filas][columnas]);
+               assertEquals(0, board.getCelda(filas, columnas)); // las demás celdas están vacías
             }
          }
       }
