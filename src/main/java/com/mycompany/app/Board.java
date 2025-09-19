@@ -7,21 +7,15 @@ public class Board {
     private int [][] board;
     private int [][] piezaActual; // la pieza que está cayendo
     private int cantidadBloques;// cantidad de bloques de la pieza actual
- 
 
-    public boolean Colocar(int[][] pieza, int cantidadBloques) {
-        this.cantidadBloques = cantidadBloques;
-        return Colocar(pieza);
-    }
 
     public Board(int filas, int columnas) {
         this.filas = filas;
         this.columnas = columnas;
         this.board = new int [filas][columnas];
-        this.piezaActual = null; // al inicio no hay pieza en el tablero
+        this.piezaActual = null;
         this.cantidadBloques = 0;
     }
-
 
     // elige una nueva pieza (y la cantidad de bloques que tiene)
     public void setPiezaActual(int[][] nuevaPieza, int cantidadBloques) {
@@ -29,11 +23,13 @@ public class Board {
         this.cantidadBloques = cantidadBloques;
     }
 
+    public int[][] getPiezaActual() {
+        return piezaActual;
+    }
 
     public boolean Colocar(int[][] pieza) {
 
-        // valida que la pieza no se salga del tablero
-        for (int i = 0; i < cantidadBloques; i++) {
+        for (int i = 0; i < cantidadBloques; i++) { // valida que la pieza no se salga del tablero
             int fila = pieza[i][0];
             int columna = pieza[i][1];
             if (estaFuera(fila, columna)) return false;
@@ -50,7 +46,7 @@ public class Board {
 
     public int getCelda(int fila, int columna) { // pregunta el estado de una celda
         if (estaFuera(fila, columna))
-            return -1;      // fuera del tablero
+            return -1;     // fuera del tablero
         return board[fila][columna];
     }
 
@@ -59,11 +55,12 @@ public class Board {
         return (fila < 0 || fila >= filas || columna < 0 || columna >= columnas);
     }
     
-        // Baja la pieza actual una fila si puede
+    // baja la pieza actual una fila si puede
     public boolean moveDown() {
         if (piezaActual == null) return false;
-        // Verifica si la pieza puede bajar
+        // verifica si la pieza puede bajar
 
+    
         for (int i = 0; i < cantidadBloques; i++) {// recorre cada bloque
             int filaActual = piezaActual[i][0]; 
             int columnaActual = piezaActual[i][1];
