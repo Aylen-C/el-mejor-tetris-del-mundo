@@ -24,7 +24,7 @@ public class Board {
     // devuelve true si todas las piezas están dentro
     public boolean Colocar(int[][] pieza) {
 
-        // valida si los lugares estan dentro del tablero
+        // valida que la pieza no se salga del tablero
         for (int[] posicion : pieza) { // 
             int fila = posicion[0]; // 
             int columna = posicion[1];//
