@@ -9,6 +9,14 @@ public class Clock {
         this.tickContador = 0;
     }
  
+    public boolean tick() {
+        tickContador++;
+        if (tickContador == tick) {  //Cuando llega a 2 (tickContador == tick), lo reseteás a 0 y devolvés true.
+            tickContador = 0;
+            return true;
+        }
+        return false;
+    }
     
     
 }

@@ -93,7 +93,7 @@ public class BoardTest {
       };
     
        //boardCaida.moveDown();
-         assertEquals(0, boardCaida.Colocar(pieceSquare));
+         assertTrue(0, boardCaida.Colocar(pieceSquare));
       
       while (boardCaida.moveDown()){
          
@@ -119,7 +119,47 @@ public class BoardTest {
        }
    }
 
+   @Test
+   public void BoardClock(){
 
+
+      Board board = new Board(20, 10);
+      Clock clock = new Clock();
+
+      int ticksParaBajar = 2; // numero de ticks necesarios para bajar la pieza
+      int bajadasContador = 0;
+
+      int [][] pieceSquare= {
+         {0,1} ,{0,2}, 
+         {1,1}, {1,2}  
+      };
+
+      boolean ColocarPieza = board.Colocar(pieceSquare);
+      assertTrue(ColocarPieza, "La pieza esta dentro del tablero");
+
+      while (true) {
+         if (clock.tick()) { // si el reloj indica que es tiempo de bajar la pieza
+            bajadasContador++;
+            boolean puedeBajar = board.moveDown();
+            if (!puedeBajar) {
+               break; // la pieza no puede bajar más, salir del bucle
+            }
+         }
+      }
+
+      // Verificar que la pieza ha bajado correctamente
+      for (int filas=0; filas<20; filas++){
+         for (int columnas=0; columnas<10; columnas++){
+            if ((filas==18 || filas==19) && (columnas==1 || columnas==2)){
+               assertEquals(1, board.Colocar(filas, columnas)); //[filas][columnas]);
+            }
+            else{
+               assertEquals(0, board.Colocar(filas, columnas)); //[filas][columnas]);
+            }
+         }
+      }
+   }
+}
    /*@Test
    public void ColisionPiezas(){
       Board board = new Board(20, 10);
