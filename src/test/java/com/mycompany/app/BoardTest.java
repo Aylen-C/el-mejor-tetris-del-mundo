@@ -73,57 +73,79 @@ public class BoardTest {
    public void CaidaLibreSquare(){
 
       Board board = new Board(20, 10);
-      Piece square = new PieceSquare();
+      PieceSquare square = new PieceSquare();
 
       board.setPiezaActual(square.forma(), 4);
 
       while (board.moveDown()) {
       }
 
-      int[][] posicionFinal = board.getPiezaActual();
-
-      for (int i = 0; i < 4; i++) {
-        int fila = posicionFinal[i][0];
-        int columna = posicionFinal[i][1];
-        
-        assertTrue(
-            (fila == 18 || fila == 19) && (columna == 1 || columna == 2)
-         );
+      for (int i = 0; i < 20; i++) {   // recorre filas y columnas
+         for (int j = 0; j < 10; j++) {
+            if ((i == 18 || i == 19) && (j == 1 || j == 2)) {
+               assertEquals(1, board.getCelda(i, j)); //si la celda esta ocupada da 1
+            }
+            else{
+               assertEquals(0, board.getCelda(i, j)); // si esta vacia da 0
+            }
+         }
       }
    }
 
 
 
    @Test
-   public void CaidaLibreStick(){
+   public void CaidaLibreStickVertical(){
 
       Board board = new Board(20, 10);
+      PieceStick stick = new PieceStick();
 
-      int [][] pieceStick = {
-         {0,6}, {1,6}, {2,6}, {3,6}
-      };
+      stick.rotateRight(); // pone la pieza en vertical
 
-      board.setPiezaActual(pieceStick, 4);
+      board.setPiezaActual(stick.forma(), 4);
 
       while (board.moveDown()) {
       }
 
-      int[][] posicionFinal = board.getPiezaActual();
+      for (int i = 0; i < 20; i++) {   // recorre filas y columnas
+         for (int j = 0; j < 10; j++) {
+            if ((i >= 16 && i <= 19) && (j == 0)) {
+               assertEquals(1, board.getCelda(i, j)); //si la celda esta ocupada da 1
+            }
+            else{
+               assertEquals(0, board.getCelda(i, j)); // si esta vacia da 0
+            }
+         }
+      }
+   }
 
-      for (int i = 0; i < 4; i++) {
-          int fila = posicionFinal[i][0];
-          int columna = posicionFinal[i][1];
-          
-         assertTrue(
-              (fila == 16 || fila == 17 || fila == 18 || fila == 19) && (columna == 6)
-          );
+   @Test
+   public void CaidaLibreStickHorizontal(){
+
+      Board board = new Board(20, 10);
+      PieceStick stick = new PieceStick();
+      // la pieza por default esta horizontal
+
+      board.setPiezaActual(stick.forma(), 4);
+
+      while (board.moveDown()) {
+      }
+
+      for (int i = 0; i < 20; i++) {   // recorre filas y columnas
+         for (int j = 0; j < 10; j++) {
+            if ((i == 19) && (j >= 0 && j <= 3)) {
+               assertEquals(1, board.getCelda(i, j)); //si la celda esta ocupada da 1
+            }
+            else{
+               assertEquals(0, board.getCelda(i, j)); // si esta vacia da 0
+            }
+         }
       }
    }
 
 
    @Test
    public void BoardClock(){
-
 
       Board board = new Board(20, 10);
       Clock clock = new Clock();
