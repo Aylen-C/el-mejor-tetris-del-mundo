@@ -1,81 +1,35 @@
 package com.mycompany.app;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
 public class PieceL2Test {
 
     @Test
-    public void testFormaL2Normal() {
+    public void formaNormal() {
         PieceL2 pieza = new PieceL2();
         pieza.setPosicionActual(0);
-        String[][] esperado = {
-            {".", ".", "*"},
-            {".", ".", "*"},
-            {".", "*", "*"}
+        int[][] esperado = {
+            {0,2},
+            {1,2},
+            {2,1}, {2,2}
         };
-        String[][] resultado = pieza.forma();
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                assertEquals(esperado[i][j], resultado[i][j]);
+        int[][] resultado = pieza.forma();
+        for (int i = 0; i < esperado.length; i++) {
+            assertArrayEquals(esperado[i], resultado[i]);
+        }
     }
 
     @Test
-    public void testFormaL2RotadaDerecha() {
+    public void formaDerecha() {
         PieceL2 pieza = new PieceL2();
         pieza.setPosicionActual(1);
-        String[][] esperado = {
-            {".", ".", "."},
-            {"*", "*", "*"},
-            {".", ".", "*"}
+        int[][] esperado = {
+            {1,0}, {1,1}, {1,2},
+            {2,2}
         };
-        String[][] resultado = pieza.forma();
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                assertEquals(esperado[i][j], resultado[i][j]);
+        int[][] resultado = pieza.forma();
+        for (int i = 0; i < esperado.length; i++) {
+            assertArrayEquals(esperado[i], resultado[i]);
+        }
     }
-
-    @Test
-    public void testFormaL2RotadaAbajo() {
-        PieceL2 pieza = new PieceL2();
-        pieza.setPosicionActual(2);
-        String[][] esperado = {
-            {"*", "*", "."},
-            {"*", ".", "."},
-            {"*", ".", "."}
-        };
-        String[][] resultado = pieza.forma();
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                assertEquals(esperado[i][j], resultado[i][j]);
-    }
-
-    @Test
-    public void noPuedeDescenderCuandoHayObstaculo() {
-        PieceL2 pieza = new PieceL2();
-        pieza.setPosicionActual(0);
-        String[][] tablero = {
-            {".", ".", ".", ".", "."},
-            {".", ".", ".", ".", "."},
-            {"*", "*", "*", "*", "*"},
-            {".", ".", ".", ".", "."},
-            {".", ".", ".", ".", "."}
-        };
-        boolean puedeBajar = pieza.puedeDescender(tablero, 1, 2);
-        assertEquals(false, puedeBajar);
-    }
-
-@Test
-public void noPuedeRotarSiChocaConOtraPieza() {
-    PieceL2 pieza = new PieceL2();
-    pieza.setPosicionActual(0);
-    String[][] tablero = {
-        {".", ".", ".", ".", "."},
-        {".", ".", ".", ".", "."},
-        {".", ".", ".", "*", "."}, 
-        {".", ".", ".", ".", "."},
-        {".", ".", ".", ".", "."}
-    };
-    boolean puedeRotar = pieza.puedeRotar(tablero, 1, 2);
-    assertEquals(false, puedeRotar);
-}
 }

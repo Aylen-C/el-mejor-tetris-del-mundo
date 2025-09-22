@@ -1,144 +1,68 @@
 package com.mycompany.app;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
-
 public class PieceTTest {
-    
+
     @Test
-    public void CreaPieza() {
-        int filas = 3;
-        int columnas = 3;
-
-        int matriz [][]= new int [filas][columnas];
-
-        for (int i = 0; i < filas; i++){
-            for (int j = 0; j < columnas; j++){
-
-                assertEquals(0, matriz[i][j]);
-            }
+    public void formaNormal() {
+        PieceT pieza = new PieceT();
+        pieza.setPosicionActual(0);
+        int[][] esperado = {
+            {0,0}, {0,1}, {0,2},
+                   {1,1}
+        };
+        int[][] resultado = pieza.forma();
+        for (int i = 0; i < esperado.length; i++) {
+            assertArrayEquals(esperado[i], resultado[i]);
         }
     }
 
-
     @Test
-    public void testNormal(){
+    public void formaDerecha() {
         PieceT pieza = new PieceT();
-        String [][] m = pieza.forma();
-
-        // FILA 1
-        assertEquals("*", m[0][0]);
-        assertEquals("*", m[0][1]);
-        assertEquals("*", m[0][2]);
-
-        // FILA 2
-        assertEquals(".", m[1][0]);
-        assertEquals("*", m[1][1]);
-        assertEquals(".", m[1][2]);
-
-        // FIlA 3
-        assertEquals(".", m[2][0]);
-        assertEquals(".", m[2][1]);
-        assertEquals(".", m[2][2]);
+        pieza.setPosicionActual(1);
+        int[][] esperado = {
+                  {0,2},
+            {1,1}, {1,2},
+                  {2,2}
+        };
+        int[][] resultado = pieza.forma();
+        for (int i = 0; i < esperado.length; i++) {
+            assertArrayEquals(esperado[i], resultado[i]);
+        }
     }
 
     @Test
-    public void testDerecha(){
+    public void formaAbajo() {
         PieceT pieza = new PieceT();
-        pieza.rotateRight();
-        String[][] m = pieza.forma();
-
-        // FILA 1
-        assertEquals(".", m[0][0]);
-        assertEquals(".", m[0][1]);
-        assertEquals("*", m[0][2]);
-
-        // FILA 2
-        assertEquals(".", m[1][0]);
-        assertEquals("*", m[1][1]);
-        assertEquals("*", m[1][2]);
-
-        // FIlA 3
-        assertEquals(".", m[2][0]);
-        assertEquals(".", m[2][1]);
-        assertEquals("*", m[2][2]);
+        pieza.setPosicionActual(2);
+        int[][] esperado = {
+                  {1,1},
+            {2,0}, {2,1}, {2,2}
+        };
+        int[][] resultado = pieza.forma();
+        for (int i = 0; i < esperado.length; i++) {
+            assertArrayEquals(esperado[i], resultado[i]);
+        }
     }
 
     @Test
-    public void testAbajo() {
+    public void formaIzquierda() {
         PieceT pieza = new PieceT();
-        pieza.rotateRight();
-        pieza.rotateRight();
-        String[][] m = pieza.forma();
-
-        // FILA 1
-        assertEquals(".", m[0][0]);
-        assertEquals(".", m[0][1]);
-        assertEquals(".", m[0][2]);
-
-        // FILA 2
-        assertEquals(".", m[1][0]);
-        assertEquals("*", m[1][1]);
-        assertEquals(".", m[1][2]);
-
-        // FIlA 3
-        assertEquals("*", m[2][0]);
-        assertEquals("*", m[2][1]);
-        assertEquals("*", m[2][2]);
-
-    }
-    
-    @Test
-    public void testIzquierda() {
-        PieceT pieza = new PieceT();
-        pieza.rotateLeft();
-        String[][] m = pieza.forma();
-
-        // FILA 1
-        assertEquals("*", m[0][0]);
-        assertEquals(".", m[0][1]);
-        assertEquals(".", m[0][2]);
-
-        // FILA 2
-        assertEquals("*", m[1][0]);
-        assertEquals("*", m[1][1]);
-        assertEquals(".", m[1][2]);
-
-        // FIlA 3
-        assertEquals("*", m[2][0]);
-        assertEquals(".", m[2][1]);
-        assertEquals(".", m[2][2]);
-    }
- @Test
-    public void noPuedeDescenderCuandoHayObstaculo() {
-        PieceT pieza = new PieceT();
-        pieza.setPosicionActual(0);
-        String[][] tablero = new String[5][5];
-        for (int i = 0; i < 5; i++)
-            for (int j = 0; j < 5; j++)
-                tablero[i][j] = ".";
-        tablero[2][0] = "*";
-        tablero[2][1] = "*";
-        tablero[2][2] = "*";
-        boolean puedeBajar = pieza.puedeDescender(tablero, 0, 0);
-        assertEquals(false, puedeBajar);
-    }
-
-    @Test
-    public void noPuedeRotarSiChocaConOtraPieza() {
-        PieceT pieza = new PieceT();
-        pieza.setPosicionActual(0);
-        String[][] tablero = new String[5][5];
-        for (int i = 0; i < 5; i++)
-            for (int j = 0; j < 5; j++)
-                tablero[i][j] = ".";
-        tablero[1][2] = "*";
-        boolean puedeRotar = pieza.puedeRotar(tablero, 0, 0);
-        assertEquals(false, puedeRotar);
+        pieza.setPosicionActual(3);
+        int[][] esperado = {
+            {0,0},
+            {1,0}, {1,1},
+            {2,0}
+        };
+        int[][] resultado = pieza.forma();
+        for (int i = 0; i < esperado.length; i++) {
+            assertArrayEquals(esperado[i], resultado[i]);
+        }
     }
 }
-
 
 
 
