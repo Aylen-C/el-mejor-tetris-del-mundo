@@ -19,14 +19,13 @@ public class Clock {
     }
     
     public void bajarFila(Board board){
-    while (true){
-        if (tick()){
-    boolean puedebarjar = board.moveDown();
-            if (!puedebarjar) {
-                break; // si no puede bajar más, sale del bucle
+        while (true){
+            if (tick()){
+                boolean puedeBajar = board.moveDown();
+                 if (!puedeBajar) {
+                    break; // si no puede bajar más, sale del bucle
+                }
             }
         }
     }
-}
-    
 }
