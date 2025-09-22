@@ -34,7 +34,7 @@ public class PieceDog2 extends Piece {
         }
         return null;
     }
-        @Override
+    @Override
      public boolean puedeDescender(String[][] tablero, int fila, int columna) {
         int[][] formaActual = forma();
         int alto = formaActual.length;
