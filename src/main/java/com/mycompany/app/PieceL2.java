@@ -18,31 +18,29 @@ public class PieceL2 extends Piece {
     }
 
     @Override
-    public String[][] forma() {
+    public int[][] forma() {
         switch (getPosicionActual()) {
             case 0:
-                return new String[][] {
-                    {".", ".", "*"},
-                    {".", ".", "*"},
-                    {".", "*", "*"}
+                return new int[][] {
+                           {0,1},
+                           {1,1},
+                    {2,0}, {2,1}
                 };
             case 1:
-                return new String[][] {
-                    {".", ".", "."},
-                    {"*", "*", "*"},
-                    {".", ".", "*"}
+                return new int[][] {
+                    {0,0},
+                    {1,0}, {1,1}, {1,2}
                 };
             case 2:
-                return new String[][] {
-                    {"*", "*", "."},
-                    {"*", ".", "."},
-                    {"*", ".", "."}
+                return new int[][] {
+                    {0,0}, {0,1},
+                    {1,0},
+                    {2,0}
                 };
             case 3:
-                return new String[][] {
-                    {"*", ".", "."},
-                    {"*", "*", "*"},
-                    {".", ".", "."}
+                return new int[][] {
+                    {0,0}, {0,1}, {0,2},
+                                  {1,2}
                 };
         }
         return null;
@@ -50,7 +48,7 @@ public class PieceL2 extends Piece {
 
     @Override
     public boolean puedeDescender(String[][] tablero, int fila, int columna) {
-        String[][] formaActual = forma();
+        int[][] formaActual = forma();
         int alto = formaActual.length;
         int ancho = formaActual[0].length;
 

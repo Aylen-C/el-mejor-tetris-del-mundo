@@ -18,31 +18,30 @@ public class PieceL extends Piece {
     }
 
     @Override
-    public String[][] forma() {
+    public int[][] forma() {
         switch (getPosicionActual()) {
             case 0: // L normal
-                return new String[][] {
-                    {"*", ".", "."},
-                    {"*", ".", "."},
-                    {"*", "*", "."}
+                return new int[][] {
+                    {0,0},
+                    {0,1},
+                    {0,2},
+                    {1,0}, {1,1}
                 };
             case 1: // L rotada derecha
-                return new String[][] {
-                    {".", ".", "."},
-                    {"*", "*", "*"},
-                    {"*", ".", "."}
+                return new int[][] {
+                    {0,0}, {0,1}, {0,2},
+                    {1,0}
                 };
             case 2: // L rotada abajo
-                return new String[][] {
-                    {"*", "*", "."},
-                    {".", "*", "."},
-                    {".", "*", "."}
+                return new int[][] {
+                    {0,0}, {0, 1},
+                           {1, 1},
+                           {2, 1}
                 };
             case 3: // L rotada izquierda
-                return new String[][] {
-                    {".", ".", "*"},
-                    {"*", "*", "*"},
-                    {".", ".", "."}
+                return new int[][] {
+                                  {0,2},
+                    {1,0}, {1,1}, {1,2}
                 };
         }
         return null;

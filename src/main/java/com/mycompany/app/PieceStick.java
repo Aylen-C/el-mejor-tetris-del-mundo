@@ -18,25 +18,25 @@ public class PieceStick extends Piece {
     }
 
     @Override
-    public String[][] forma() {
+    public int[][] forma() {
         if (getPosicionActual() == 0) {
             // horizontal
-            return new String[][] {
-                {"*", "*", "*", "*"}
+            return new int[][] {
+                {0,0}, {0,1}, {0,2}, {0,3}
             };
         } else {
             // vertical
-            return new String[][] {
-                {"*"},
-                {"*"},
-                {"*"},
-                {"*"}
+            return new int[][] {
+                {0,0},
+                {1,0},
+                {2,0},
+                {3,0}
             };
         }
     }
     @Override
     public boolean puedeDescender(String[][] tablero, int fila, int columna) {
-        String[][] formaActual = forma();
+        int[][] formaActual = forma();
         int alto = formaActual.length;
         int ancho = formaActual[0].length;
 

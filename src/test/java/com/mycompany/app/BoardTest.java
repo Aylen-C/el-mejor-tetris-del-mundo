@@ -73,13 +73,9 @@ public class BoardTest {
    public void CaidaLibreSquare(){
 
       Board board = new Board(20, 10);
+      Piece square = new PieceSquare();
 
-      int [][] pieceSquare = {
-         {1,1}, {1,2}, 
-         {2,1}, {2,2}  
-      };
-
-      board.setPiezaActual(pieceSquare, 4);
+      board.setPiezaActual(square.forma(), 4);
 
       while (board.moveDown()) {
       }

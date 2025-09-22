@@ -12,8 +12,9 @@ public abstract class Piece implements IRotator {
     }
 
     int orientacionActual(){
-        return 4;
+        return posicionActual;
     }
+    
     public void rotateRight(){
         switch (posicionActual){//  0 = normal   -   1 = derecha   -   2 = abajo   -   3 = izquierda
 
@@ -49,7 +50,7 @@ public abstract class Piece implements IRotator {
         }
     }
     
-    public abstract String[][] forma();  /* cada pieza implementa su propia forma y  
+    public abstract int[][] forma();  /* cada pieza implementa su propia forma y  
                                             la devuelve segun su posicion actual
                                             (0, 1, 2, 3)  */
     public abstract boolean puedeDescender(String[][] tablero, int fila, int columna);

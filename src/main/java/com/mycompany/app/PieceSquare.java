@@ -11,11 +11,11 @@ public class PieceSquare extends Piece {
     }
 
     @Override
-    public String[][] forma() {
+    public int[][] forma() {
         // devuelve la forma del cuadrado
-        return new String[][] {
-            {"*", "*"},
-            {"*", "*"}
+        return new int[][] {
+            {0, 1}, {0, 2},
+            {1, 1}, {1, 2}
         };
     }
 
