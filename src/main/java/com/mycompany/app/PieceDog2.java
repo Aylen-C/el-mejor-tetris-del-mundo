@@ -34,25 +34,15 @@ public class PieceDog2 extends Piece {
         }
         return null;
     }
+
     @Override
-     public boolean puedeDescender(String[][] tablero, int fila, int columna) {
+    public boolean puedeDescender(String[][] tablero, int fila, int columna) {
         int[][] formaActual = forma();
-        int alto = formaActual.length;
-        int ancho = formaActual[0].length;
-
-        if (fila + alto >= tablero.length) {
-            return false;
-        }
-
-        for (int i = 0; i < alto; i++) {
-            for (int j = 0; j < ancho; j++) {
-                if (formaActual[i][j].equals("*")) {
-                    int abajo = fila + i + 1;
-                    int col = columna + j;
-                    if (!tablero[abajo][col].equals(".")) {
-                        return false;
-                    }
-                }
+        for (int[] coord : formaActual) {
+            int nuevaFila = fila + coord[0] + 1;
+            int nuevaColumna = columna + coord[1];
+            if (nuevaFila >= tablero.length || !tablero[nuevaFila][nuevaColumna].equals(".")) {
+                return false;
             }
         }
         return true;
@@ -66,25 +56,14 @@ public class PieceDog2 extends Piece {
             nuevaPosicion = 0;
         }
         setPosicionActual(nuevaPosicion);
-        String[][] formaRotada = forma();
-        setPosicionActual(originalPosicion); // Vuelve a la posición original
+        int[][] formaRotada = forma();
+        setPosicionActual(originalPosicion);
 
-        int alto = formaRotada.length;
-        int ancho = formaRotada[0].length;
-
-        if (fila + alto > tablero.length || columna + ancho > tablero[0].length) {
-            return false;
-        }
-
-        for (int i = 0; i < alto; i++) {
-            for (int j = 0; j < ancho; j++) {
-                if (formaRotada[i][j].equals("*")) {
-                    int f = fila + i;
-                    int c = columna + j;
-                    if (!tablero[f][c].equals(".")) {
-                        return false;
-                    }
-                }
+        for (int[] coord : formaRotada) {
+            int f = fila + coord[0];
+            int c = columna + coord[1];
+            if (f < 0 || f >= tablero.length || c < 0 || c >= tablero[0].length || !tablero[f][c].equals(".")) {
+                return false;
             }
         }
         return true;
