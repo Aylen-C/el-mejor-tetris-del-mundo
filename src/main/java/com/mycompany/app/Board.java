@@ -77,4 +77,26 @@ public class Board {
         }
         return true;
     }
+    public void EliminarLinea() {
+        for (int fila = filas - 1; fila >= 0; fila--) { // recorre las lineas del tablero
+            boolean LineaCompleta = true;
+            for (int columna = 0; columna < columnas; columna++) { 
+                if (board[fila][columna] == 0) { // si encuentra un espacio vacio no esta completa
+                    LineaCompleta = false;
+                    break;
+                }
+            }
+            if (LineaCompleta) { //si la linea esta completa 
+                for (int moverFila = fila; moverFila > 0; moverFila--) { // baja todas las filas una posicion
+                    for (int columna = 0; columna < columnas; columna++) {
+                        board[moverFila][columna] = board[moverFila - 1][columna];
+                    }
+                }
+                for (int columna = 0; columna < columnas; columna++) { // limpia la primera fila
+                    board[0][columna] = 0; 
+                }
+                fila++; //vuelve a hacer lo mismo con la "nueva" fila
+            }
+        }
+    }
 }
