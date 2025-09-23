@@ -190,6 +190,7 @@ public class BoardTest {
 
       PieceSquare square = new PieceSquare();
       board.setPiezaActual(square.forma(), 4);
+                                          //sobrecarga coordenadas
       while (board.moveDown()) {
       }
 
@@ -203,6 +204,7 @@ public class BoardTest {
             assertEquals(1, board.getCelda(i, j)); // confirma posicion
          }
       }
+      //getcelda
 
       for (int j = 0; j <= 3; j++) { // stick tiene que estar justo arriba del square
          assertEquals(1, board.getCelda(17, j)); //fila 17 y columnas 0 a 3
