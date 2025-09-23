@@ -183,4 +183,31 @@ public class BoardTest {
       }
    }
 
+
+   @Test
+   public void ColisionTest (){
+      Board board = new Board (20, 10);
+
+      PieceSquare square = new PieceSquare();
+      board.setPiezaActual(square.forma(), 4);
+      while (board.moveDown()) {
+      }
+
+      PieceStick stick = new PieceStick();
+      board.setPiezaActual(stick.forma(), 4);
+      while (board.moveDown()) {
+      }
+
+      for (int i = 18; i <= 19; i++) { // square tiene que estar en el fondo en filas 18 y 19
+         for (int j = 0; j <= 1; j++) { // columnas 0 y 1
+            assertEquals(1, board.getCelda(i, j)); // confirma posicion
+         }
+      }
+
+      for (int j = 0; j <= 3; j++) { // stick tiene que estar justo arriba del square
+         assertEquals(1, board.getCelda(17, j)); //fila 17 y columnas 0 a 3
+      }
+
+   }
 }
+
