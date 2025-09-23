@@ -41,20 +41,18 @@ public void BajaCompleto(){
     board.setPiezaActual(square.forma(), 4);
 
     int bajadas=0; 
+    boolean puedebajar=true;
 
     for(int tick=0; tick<38; tick++){
         if (clock.tick()){
-        boolean puedebajar = board.moveDown();
+        puedebajar = board.moveDown();
         }
-        if (!puedebajar()){
+        if (!puedebajar){
             break;
         }
         bajadas++;
-    }
-
-    
-assertTrue(puedebajar,"Puede seguir bajando");
-    assertEquals(19,bajadas);
+    };
+    assertEquals(19,bajadas, "bajó 19 veces");
     assertFalse(puedebajar,"No puede seguir bajando");
     
 
