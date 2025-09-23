@@ -82,7 +82,7 @@ public class BoardTest {
 
       for (int i = 0; i < 20; i++) {   // recorre filas y columnas
          for (int j = 0; j < 10; j++) {
-            if ((i == 18 || i == 19) && (j == 1 || j == 2)) {
+            if ((i == 18 || i == 19) && (j == 0 || j == 1)) {
                assertEquals(1, board.getCelda(i, j)); //si la celda esta ocupada da 1
             }
             else{
