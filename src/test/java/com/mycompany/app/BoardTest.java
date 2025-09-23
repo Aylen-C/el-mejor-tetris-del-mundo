@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class BoardTest {
 
-@Test   
+   @Test   
    public void CreaTablero () {
       Board board = new Board(20, 10);
       for (int i = 0; i < 20; i++) {
@@ -208,6 +208,33 @@ public class BoardTest {
          assertEquals(1, board.getCelda(17, j)); //fila 17 y columnas 0 a 3
       }
 
+   }
+
+   @Test
+   public void ColisionTest2 (){
+      Board board = new Board (20, 10);
+
+      PieceSquare square = new PieceSquare();
+      board.setPiezaActual(square.forma(), 4);
+      while (board.moveDown()) {
+      }
+
+      PieceSquare square2 = new PieceSquare();
+      board.setPiezaActual(square2.forma(), 4);
+      while (board.moveDown()) {
+      }
+
+      for (int i = 18; i <= 19; i++) { // square tiene que estar en el fondo en filas 18 y 19
+         for (int j = 0; j <= 1; j++) { // columnas 0 y 1
+            assertEquals(1, board.getCelda(i, j)); // confirma posicion
+         }
+      }
+
+      for (int i = 16; i <= 17; i++) { // square2 tiene que estar justo arriba del square
+         for (int j = 0; j <= 1; j++) { // filas 16 y 17 y columnas 0 y 1
+            assertEquals(1, board.getCelda(i, j)); // confirma posicion
+         }
+      }
    }
 }
 
