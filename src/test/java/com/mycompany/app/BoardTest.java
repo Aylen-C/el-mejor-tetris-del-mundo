@@ -23,22 +23,16 @@ public class BoardTest {
       public void PiezasTablero() {
          Board board = new Board(20,10); 
 
-         int [][] PieceSqueare= {
-            {19,3} ,{19,4}, {18,3}, {18,4}  
-         };
-
-         assertTrue(board.Colocar(PieceSqueare), "La pieza está dentro del tablero");
+         PieceSquare pieceSquare = new PieceSquare();
+         assertTrue(board.Colocar(pieceSquare.forma()), "La pieza está dentro del tablero");
 
          assertEquals(0, board.getCelda(19,3));
          assertEquals(0, board.getCelda(19,4));
          assertEquals(0, board.getCelda(18,3));
          assertEquals(0, board.getCelda(18,4));
 
-         int [][] pieceStick = {
-            {19,6}, {18,6}, {17,6}, {16,6}
-         };
-
-         assertTrue(board.Colocar(pieceStick), "La pieza está dentro del tablero");
+         PieceStick pieceStick = new PieceStick();
+         assertTrue(board.Colocar(pieceStick.forma()), "La pieza está dentro del tablero");
 
          assertEquals(0, board.getCelda(19,6));
          assertEquals(0, board.getCelda(18,6));
@@ -50,21 +44,11 @@ public class BoardTest {
    @Test
    public void FueraDelTablero() {
       Board board = new Board(20, 10);
-      int [][] pieceSquareAfuera= {
-         {20,3} ,{20,4}, 
-         {18,3}, {18,4}  
-      };
+      PieceSquare pieceSquareAfuera = new PieceSquare();
+      assertTrue(board.Colocar(pieceSquareAfuera.forma()), "La pieza está fuera del tablero");
 
-      assertTrue(board.Colocar(pieceSquareAfuera), "La pieza está fuera del tablero");
-
-      int [][] pieceStickAfuera= {
-         {21,6},
-         {20,6}, 
-         {19,6},
-         {17,6}  
-      };
-
-      assertTrue(board.Colocar(pieceStickAfuera), "La pieza está fuera del tablero");
+     PieceStick pieceStickAfuera = new PieceStick();
+      assertTrue(board.Colocar(pieceStickAfuera.forma()), "La pieza está fuera del tablero");
    }
 
 
@@ -131,7 +115,7 @@ public class BoardTest {
       while (board.moveDown()) {
       }
 
-      for (int i = 0; i < 20; i++) {   // recorre filas y columnas
+      for (int i = 0; i < 20; i++) {   // recorre filas (i) y columnas (j)
          for (int j = 0; j < 10; j++) {
             if ((i == 19) && (j >= 0 && j <= 3)) {
                assertEquals(1, board.getCelda(i, j)); //si la celda esta ocupada da 1
@@ -149,16 +133,9 @@ public class BoardTest {
 
       Board board = new Board(20, 10);
       Clock clock = new Clock();
+      PieceSquare square = new PieceSquare();
 
-      int ticksParaBajar = 2; // numero de ticks necesarios para bajar la pieza
-      int bajadasContador = 0;
-
-      int [][] pieceSquare= {
-         {0,1} ,{0,2}, 
-         {1,1}, {1,2}  
-      };
-
-      board.setPiezaActual(pieceSquare, 0,0); // activo la pieza antes de dejarla caer
+      board.setPiezaActual(square. forma(), 0,1); // activo la pieza antes de dejarla caer
 
       while (true) {
         if (clock.tick()) { // si el reloj indica que es tiempo de bajar la pieza
