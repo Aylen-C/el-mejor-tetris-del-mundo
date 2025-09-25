@@ -135,7 +135,7 @@ public class BoardTest {
       Clock clock = new Clock();
       PieceSquare square = new PieceSquare();
 
-      board.setPiezaActual(square. forma(), 0,1); // activo la pieza antes de dejarla caer
+      board.setPiezaActual(square.forma(), 0,1); // activo la pieza antes de dejarla caer
 
       while (true) {
         if (clock.tick()) { // si el reloj indica que es tiempo de bajar la pieza

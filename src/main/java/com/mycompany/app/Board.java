@@ -15,11 +15,11 @@ public class Board {
         this.piezaActual = null;
     }
 
-    // elige una nueva pieza (y la cantidad de bloques que tiene)
+    // elige una nueva pieza
     public void setPiezaActual(int[][] nuevaPieza, int fila, int columna) { //se arreglo para colocar la pieza en las coordenadas iniciales
-        for (int i = 0; i < 4; i++) {
-            nuevaPieza[i][0] += fila; 
-            nuevaPieza[i][1] += columna;
+        for (int bloque = 0; bloque < 4; bloque++) {
+            nuevaPieza[bloque][0] += fila; 
+            nuevaPieza[bloque][1] += columna;
         }
         this.piezaActual = nuevaPieza;
     }
