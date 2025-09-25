@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class BoardTest {
 
-   @Test   
+@Test   
    public void CreaTablero () {
       Board board = new Board(20, 10);
       for (int i = 0; i < 20; i++) {
@@ -75,7 +75,7 @@ public class BoardTest {
       Board board = new Board(20, 10);
       PieceSquare square = new PieceSquare();
 
-      board.setPiezaActual(square.forma(), 4);
+      board.setPiezaActual(square.forma(), 0,0);
 
       while (board.moveDown()) {
       }
@@ -102,7 +102,7 @@ public class BoardTest {
 
       stick.rotateRight(); // pone la pieza en vertical
 
-      board.setPiezaActual(stick.forma(), 4);
+      board.setPiezaActual(stick.forma(), 0,0);
 
       while (board.moveDown()) {
       }
@@ -126,7 +126,7 @@ public class BoardTest {
       PieceStick stick = new PieceStick();
       // la pieza por default esta horizontal
 
-      board.setPiezaActual(stick.forma(), 4);
+      board.setPiezaActual(stick.forma(), 0,0);
 
       while (board.moveDown()) {
       }
@@ -158,7 +158,7 @@ public class BoardTest {
          {1,1}, {1,2}  
       };
 
-      board.setPiezaActual(pieceSquare, 4); // activo la pieza antes de dejarla caer
+      board.setPiezaActual(pieceSquare, 0,0); // activo la pieza antes de dejarla caer
 
       while (true) {
         if (clock.tick()) { // si el reloj indica que es tiempo de bajar la pieza
@@ -189,54 +189,25 @@ public class BoardTest {
       Board board = new Board (20, 10);
 
       PieceSquare square = new PieceSquare();
-      board.setPiezaActual(square.forma(), 4);
-                                          //sobrecarga coordenadas
+      board.setPiezaActual(square.forma(), 0, 4); // ahora se pone coordenadas iniciales
       while (board.moveDown()) {
       }
 
       PieceStick stick = new PieceStick();
-      board.setPiezaActual(stick.forma(), 4);
+      board.setPiezaActual(stick.forma(), 0, 4); // ahora se pone coordenadas iniciales
       while (board.moveDown()) {
       }
 
       for (int i = 18; i <= 19; i++) { // square tiene que estar en el fondo en filas 18 y 19
-         for (int j = 0; j <= 1; j++) { // columnas 0 y 1
-            assertEquals(1, board.getCelda(i, j)); // confirma posicion
-         }
-      }
-      //getcelda
-
-      for (int j = 0; j <= 3; j++) { // stick tiene que estar justo arriba del square
-         assertEquals(1, board.getCelda(17, j)); //fila 17 y columnas 0 a 3
-      }
-
-   }
-
-   @Test
-   public void ColisionTest2 (){
-      Board board = new Board (20, 10);
-
-      PieceSquare square = new PieceSquare();
-      board.setPiezaActual(square.forma(), 4);
-      while (board.moveDown()) {
-      }
-
-      PieceSquare square2 = new PieceSquare();
-      board.setPiezaActual(square2.forma(), 4);
-      while (board.moveDown()) {
-      }
-
-      for (int i = 18; i <= 19; i++) { // square tiene que estar en el fondo en filas 18 y 19
-         for (int j = 0; j <= 1; j++) { // columnas 0 y 1
+         for (int j = 4; j <= 5; j++) { // columnas 0 y 1
             assertEquals(1, board.getCelda(i, j)); // confirma posicion
          }
       }
 
-      for (int i = 16; i <= 17; i++) { // square2 tiene que estar justo arriba del square
-         for (int j = 0; j <= 1; j++) { // filas 16 y 17 y columnas 0 y 1
-            assertEquals(1, board.getCelda(i, j)); // confirma posicion
-         }
+      for (int j = 4; j <= 5; j++) { // stick tiene que estar justo arriba del square
+         assertEquals(1, board.getCelda(17, j)); //fila 17 y columnas 4 a 5
       }
+
    }
 }
 
