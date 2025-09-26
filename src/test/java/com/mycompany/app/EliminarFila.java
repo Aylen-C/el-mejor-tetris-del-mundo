@@ -36,11 +36,6 @@ public class EliminarFila {
         board.setPiezaActual(square5.forma(), 0, 8);
         while (board.moveDown()) {}
 
-        /*
-        for (int j = 0; j < 10; j++) {
-            assertEquals(1, board.getCelda(19, j), "La fila 19 debe estar completa en la columna " + j);
-        }*/
-
         assertEquals(1, board.getCelda(19, 0), "La fila 19 debe estar completa");
         assertEquals(1, board.getCelda(19, 2), "La fila 19 debe estar completa");
         assertEquals(1, board.getCelda(19, 4), "La fila 19 debe estar completa");
@@ -48,12 +43,6 @@ public class EliminarFila {
         assertEquals(1, board.getCelda(19, 8), "La fila 19 debe estar completa");
 
         board.EliminarFila();
-
-        /*
-        for (int j = 0; j < 10; j++) {
-            assertEquals(1, board.getCelda(19, j), "La fila 19 debe estar completa");
-        } 
-        */
 
         assertEquals(0, board.getCelda(19, 0), "La fila 19 debe estar vacía");
         assertEquals(0, board.getCelda(19, 2), "La fila 19 debe estar vacía");
@@ -133,9 +122,10 @@ public class EliminarFila {
 
      
         board.EliminarFila();
+        lineCount += board.EliminarFila(); 
     
 
-        assertEquals(0, board.getCelda(18, 0), "La fila 18 debe estar vacía en la columna 0");
+        assertEquals(0, board.getCelda(18, 0), "La ila 18 debe estar vacía en la columna 0");
         assertEquals(0, board.getCelda(18, 1), "La fila 18 debe estar vacía en la columna 1");
         assertEquals(0, board.getCelda(18, 2), "La fila 18 debe estar vacía en la columna 2");
         assertEquals(0, board.getCelda(18, 3), "La fila 18 debe estar vacía en la columna 3");
