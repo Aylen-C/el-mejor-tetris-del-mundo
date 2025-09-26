@@ -15,7 +15,8 @@ public class PerderTest {
     for (int caidas=0; caidas<11; caidas++){
       board.setPiezaActual(square.forma(), 0,5);
 
-        boolean moverPieza = board.moveDown(); //intenta bajar la pieza actual una fila
+        boolean moverPieza = board.moveDown(); 
+        if(!moverPieza){//intenta bajar la pieza actual una fila
         perder = true; 
         break; 
       }
