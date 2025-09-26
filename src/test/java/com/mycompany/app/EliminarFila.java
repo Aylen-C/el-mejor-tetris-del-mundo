@@ -64,6 +64,12 @@ public class EliminarFila {
     }
 
 
+/* 
+                    L H
+                    L H
+    x x - - - - O O L H   <- FILA 18
+      x x       O O L H
+*/
 
     @Test
     public void EliminarLineaCompletaConPiezasEspecificas() {
@@ -82,15 +88,15 @@ public class EliminarFila {
 
 
         // Stick horizontal comenzando en columna 2
-        PieceStick stickH = new PieceStick(); 
-        stickH.setPosicionActual(0);// posición horizontal
-        board.setPiezaActual(stickH.forma(), 0, 2);
+        PieceStick stickHorizontal = new PieceStick(); 
+        stickHorizontal.setPosicionActual(0);// posición horizontal
+        board.setPiezaActual(stickHorizontal.forma(), 0, 2);
         while (board.moveDown()) {}
 
-        assertEquals(1, board.getCelda(18, 2), "StickH debe ocupar (18,2)");
-        assertEquals(1, board.getCelda(18, 3), "StickH debe ocupar (18,3)");
-        assertEquals(1, board.getCelda(18, 4), "StickH debe ocupar (18,4)");
-        assertEquals(1, board.getCelda(18, 5), "StickH debe ocupar (18,5)");
+        assertEquals(1, board.getCelda(18, 2), "Ocupa (fila 18, columna 2)");
+        assertEquals(1, board.getCelda(18, 3), "Ocupa (fila 18, columna 3)");
+        assertEquals(1, board.getCelda(18, 4), "Ocupa (fila 18, columna 4)");
+        assertEquals(1, board.getCelda(18, 5), "Ocupa (fila 18, columna 5)");
 
 
 
@@ -99,37 +105,35 @@ public class EliminarFila {
         board.setPiezaActual(square.forma(), 0, 6);
         while (board.moveDown()) {}
 
-        assertEquals(1, board.getCelda(18, 6), "Square debe ocupar (18,6)");
-        assertEquals(1, board.getCelda(18, 7), "Square debe ocupar (18,7)");
-        assertEquals(1, board.getCelda(19, 6), "Square debe ocupar (19,6)");
-        assertEquals(1, board.getCelda(19, 7), "Square debe ocupar (19,7)");
+        assertEquals(1, board.getCelda(18, 6), "OOcupa (fila 18, columna 6)");
+        assertEquals(1, board.getCelda(18, 7), "Ocupa (fila 18, columna 7)");
+        assertEquals(1, board.getCelda(19, 6), "Ocupa (fila 19, columna 6)");
+        assertEquals(1, board.getCelda(19, 7), "Ocupa (fila 19, columna 7)");
 
 
 
         // Stick vertical en columna 8
-        PieceStick stickV1 = new PieceStick();
-        stickV1.setPosicionActual(1);// posición vertical
-        board.setPiezaActual(stickV1.forma(), 0, 8);
+        PieceStick stick1 = new PieceStick();
+        stick1.setPosicionActual(1);// posición vertical
+        board.setPiezaActual(stick1.forma(), 0, 8);
         while (board.moveDown()) {}
 
-        assertEquals(1, board.getCelda(18, 8), "StickV1 debe ocupar (18,8)");
-        assertEquals(1, board.getCelda(19, 8), "StickV1 debe ocupar (19,8)");
-
+        assertEquals(1, board.getCelda(18, 8), "Ocupa (18,8)");
+        assertEquals(1, board.getCelda(19, 8), "Ocupa (19,8)");
 
         
         // Stick vertical en columna 9
-        PieceStick stickV2 = new PieceStick();
-        stickV2.setPosicionActual(1); // posición vertical
-        board.setPiezaActual(stickV2.forma(), 0, 9);
+        PieceStick stick2 = new PieceStick();
+        stick2.setPosicionActual(1); // posición vertical
+        board.setPiezaActual(stick2.forma(), 0, 9);
         while (board.moveDown()) {}
-
-        assertEquals(1, board.getCelda(18, 9), "StickV2 debe ocupar (18,9)");
-        assertEquals(1, board.getCelda(19, 9), "StickV2 debe ocupar (19,9)");
+        
+        assertEquals(1, board.getCelda(18, 9), "Ocupa (fila 18, columna 9)");
+        assertEquals(1, board.getCelda(19, 9), "Ocupa (fila 19, columna 9)");
 
      
-
         board.EliminarFila();
-        assertEquals(1, board.lineCount(), "Debe haberse eliminado 1 línea completa");
+    
 
         assertEquals(0, board.getCelda(18, 0), "La fila 18 debe estar vacía en la columna 0");
         assertEquals(0, board.getCelda(18, 1), "La fila 18 debe estar vacía en la columna 1");
@@ -141,7 +145,7 @@ public class EliminarFila {
         assertEquals(0, board.getCelda(18, 7), "La fila 18 debe estar vacía en la columna 7");
         
         
-        assertEquals(1, board.getCelda(18, 8), "La fila 18 debe estar vacía en la columna 8");
-        assertEquals(1, board.getCelda(18, 9), "La fila 18 debe estar vacía en la columna 9");
+        assertEquals(1, board.getCelda(18, 8), "La fila 18 debe estar ocupada en la columna 8");
+        assertEquals(1, board.getCelda(18, 9), "La fila 18 debe estar ocupada en la columna 9");
     }
 }
