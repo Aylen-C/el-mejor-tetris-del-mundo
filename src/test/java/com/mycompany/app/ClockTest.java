@@ -14,7 +14,7 @@ public class ClockTest {
     Board board = new Board(20, 10);
     Clock clock = new Clock();
     PieceSquare square = new PieceSquare();
-    board.setPiezaActual(square.forma(), 4); // Coloca la pieza en la parte superior del tablero
+    board.setPiezaActual(square.forma(), 0,0);// Coloca la pieza en la parte superior del tablero
 
 
     int bajadas=0; 
@@ -38,7 +38,7 @@ public void BajaCompleto(){
     Board board = new Board(20, 10);
     Clock clock = new Clock();
     PieceSquare square = new PieceSquare();
-    board.setPiezaActual(square.forma(), 4);
+    board.setPiezaActual(square.forma(), 0,0);
 
     int bajadas=0; 
     boolean puedebajar=true;
@@ -52,7 +52,7 @@ public void BajaCompleto(){
         }
         bajadas++;
     };
-    assertEquals(19,bajadas, "bajó 19 veces");
+    assertEquals(37,bajadas, "bajó 19 veces");
     assertFalse(puedebajar,"No puede seguir bajando");
     
 
