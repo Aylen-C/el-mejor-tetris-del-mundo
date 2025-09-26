@@ -6,6 +6,7 @@ public class Board {
     private int columnas;
     private int [][] board;
     private int [][] piezaActual; // la pieza que está cayendo
+    private int lineCount = 0; // contador de lineas eliminadas
 
 
     public Board(int filas, int columnas) {
@@ -15,11 +16,39 @@ public class Board {
         this.piezaActual = null;
     }
 
+    public int lineCount() { // cuenta las lineas eliminadas
+        return lineCount;
+    }
+
+    public void EliminarFila(){
+        for (int fila = filas - 1; fila >= 0; fila--) { // recorre las lineas del tablero
+            boolean completa = true;
+            for (int columna = 0; columna < columnas; columna++) {
+                if (board[fila][columna] == 0) { // si encuentra un espacio vacio no esta completa
+                    completa = false;
+                    break;
+                }
+            }
+            if (completa) { //si la linea esta completa
+                for (int f = fila; f > 0; f--) { // baja todas las filas una posicion
+                    for (int c = 0; c < columnas; c++) {
+                        board[f][c] = board[f - 1][c];
+                    }
+                }
+                for (int c = 0; c < columnas; c++) {
+                    board[0][c] = 0; // limpia la fila superior
+                }
+                lineCount++; // incrementa el contador de lineas eliminadas
+            }
+
+        }
+    }
+
     // elige una nueva pieza
     public void setPiezaActual(int[][] nuevaPieza, int fila, int columna) { //se arreglo para colocar la pieza en las coordenadas iniciales
-        for (int bloque = 0; bloque < 4; bloque++) {
-            nuevaPieza[bloque][0] += fila; 
-            nuevaPieza[bloque][1] += columna;
+        for (int i = 0; i < 4; i++) {
+            nuevaPieza[i][0] += fila; 
+            nuevaPieza[i][1] += columna;
         }
         this.piezaActual = nuevaPieza;
     }
@@ -68,6 +97,7 @@ public class Board {
             int filaAbajo = filaActual + 1; // calcula fila debajo de la pieza
             if (filaAbajo >= filas || board[filaAbajo][columnaActual] == 1) { // esta afuera u ocupada
                 Colocar(piezaActual); // fija pieza
+                EliminarFila(); // elimina lineas completas
                 piezaActual = null; // ya no hay pieza activa
                 return false; // no puede bajar
             }
@@ -78,26 +108,5 @@ public class Board {
         }
         return true;
     }
-    public void EliminarLinea() {
-        for (int fila = filas - 1; fila >= 0; fila--) { // recorre las lineas del tablero
-            boolean LineaCompleta = true;
-            for (int columna = 0; columna < columnas; columna++) { 
-                if (board[fila][columna] == 0) { // si encuentra un espacio vacio no esta completa
-                    LineaCompleta = false;
-                    break;
-                }
-            }
-            if (LineaCompleta) { //si la linea esta completa 
-                for (int moverFila = fila; moverFila > 0; moverFila--) { // baja todas las filas una posicion
-                    for (int columna = 0; columna < columnas; columna++) {
-                        board[moverFila][columna] = board[moverFila - 1][columna];
-                    }
-                }
-                for (int columna = 0; columna < columnas; columna++) { // limpia la primera fila
-                    board[0][columna] = 0; 
-                }
-                fila++; //vuelve a hacer lo mismo con la "nueva" fila
-            }
-        }
-    }
+
 }

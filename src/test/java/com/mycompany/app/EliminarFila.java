@@ -1,30 +1,54 @@
 package com.mycompany.app;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class EliminarFila {
 
     @Test 
-    public void EliminarLineaCompleta() {
-        Board board = new Board(4, 4);
+    public void EliminarLineaCompleta() {//con cuadrados
+        Board board = new Board(20, 10);
 
-        board.getBoard()[0] = new int[] {0, 0, 0, 0};
-        board.getBoard()[1] = new int[] {1, 1, 1, 1}; 
-        board.getBoard()[2] = new int[] {0, 1, 0, 1};
-        board.getBoard()[3] = new int[] {1, 0, 1, 0};
+       /* for (int col = 0; col <= 8; col += 2) {
+            PieceSquare square = new PieceSquare();
+            board.setPiezaActual(square.forma(), 18, col);
+            while (board.moveDown()) {}
+        } */
 
-        board.EliminarLinea();
+        // 5 cuadrados para las 10 columnas
+        PieceSquare square1 = new PieceSquare();
+        board.setPiezaActual(square1.forma(), 0, 0);
+        while (board.moveDown()) {}
 
-        int[][] esperado = {
-            {0, 0, 0, 0},
-            {0, 1, 0, 1},
-            {1, 0, 1, 0},
-            {0, 0, 0, 0}
-        };
+        PieceSquare square2 = new PieceSquare();
+        board.setPiezaActual(square2.forma(), 0, 2);
+        while (board.moveDown()) {}
 
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], board.getBoard()[i]);
+        PieceSquare square3 = new PieceSquare();
+        board.setPiezaActual(square3.forma(), 0, 4);
+        while (board.moveDown()) {}
+
+        PieceSquare square4 = new PieceSquare();
+        board.setPiezaActual(square4.forma(), 0, 6);
+        while (board.moveDown()) {}
+
+        PieceSquare square5 = new PieceSquare();
+        board.setPiezaActual(square5.forma(), 0, 8);
+        while (board.moveDown()) {}
+
+
+
+        assertEquals(1, board.getCelda(19, 0), "La fila 19 debe estar completa");
+        assertEquals(1, board.getCelda(19, 2), "La fila 19 debe estar completa");
+        assertEquals(1, board.getCelda(19, 4), "La fila 19 debe estar completa");
+        assertEquals(1, board.getCelda(19, 6), "La fila 19 debe estar completa");
+        assertEquals(1, board.getCelda(19, 8), "La fila 19 debe estar completa");
+
+        board.EliminarFila();
+
+        for(int j = 0; j < 10; j++){
+            assertEquals(0, board.getCelda(19, j), "La fila 19 debe estar vacía");
         }
+
     }
 }
