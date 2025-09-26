@@ -72,7 +72,7 @@ public class EliminarFila {
 */
 
     @Test
-    public void EliminarLineaCompletaConPiezasEspecificas() {
+    public void EliminarLineaCompletaConDistintasPiezas() {
         Board board = new Board(20, 10);
 
         // Dog en columna 0 (sin rotar)
@@ -105,7 +105,7 @@ public class EliminarFila {
         board.setPiezaActual(square.forma(), 0, 6);
         while (board.moveDown()) {}
 
-        assertEquals(1, board.getCelda(18, 6), "OOcupa (fila 18, columna 6)");
+        assertEquals(1, board.getCelda(18, 6), "Ocupa (fila 18, columna 6)");
         assertEquals(1, board.getCelda(18, 7), "Ocupa (fila 18, columna 7)");
         assertEquals(1, board.getCelda(19, 6), "Ocupa (fila 19, columna 6)");
         assertEquals(1, board.getCelda(19, 7), "Ocupa (fila 19, columna 7)");
