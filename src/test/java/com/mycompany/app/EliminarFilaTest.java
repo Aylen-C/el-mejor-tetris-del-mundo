@@ -3,19 +3,12 @@ package com.mycompany.app;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class EliminarFila {
+public class EliminarFilaTest{
 
     @Test 
     public void EliminarLineaCompleta() {//con cuadrados
         Board board = new Board(20, 10);
 
-       /* for (int col = 0; col <= 8; col += 2) {
-            PieceSquare square = new PieceSquare();
-            board.setPiezaActual(square.forma(), 18, col);
-            while (board.moveDown()) {}
-        } */
-
-        // 5 cuadrados para las 10 columnas
         PieceSquare square1 = new PieceSquare();
         board.setPiezaActual(square1.forma(), 0, 0);
         while (board.moveDown()) {}
@@ -43,7 +36,10 @@ public class EliminarFila {
         assertEquals(1, board.getCelda(19, 8), "La fila 19 debe estar completa");
 
         board.EliminarFila();
+        board.EliminarFila();
+        int lineCount = board.lineCount();
 
+        
         assertEquals(0, board.getCelda(19, 0), "La fila 19 debe estar vacía");
         assertEquals(0, board.getCelda(19, 2), "La fila 19 debe estar vacía");
         assertEquals(0, board.getCelda(19, 4), "La fila 19 debe estar vacía");
@@ -125,7 +121,7 @@ public class EliminarFila {
         lineCount += board.EliminarFila(); 
     
 
-        assertEquals(0, board.getCelda(18, 0), "La ila 18 debe estar vacía en la columna 0");
+        assertEquals(0, board.getCelda(18, 0), "La fila 18 debe estar vacía en la columna 0");
         assertEquals(0, board.getCelda(18, 1), "La fila 18 debe estar vacía en la columna 1");
         assertEquals(0, board.getCelda(18, 2), "La fila 18 debe estar vacía en la columna 2");
         assertEquals(0, board.getCelda(18, 3), "La fila 18 debe estar vacía en la columna 3");
