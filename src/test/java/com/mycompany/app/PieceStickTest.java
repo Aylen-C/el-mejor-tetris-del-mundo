@@ -13,9 +13,7 @@ public class PieceStickTest {
             {0,0}, {0,1}, {0,2}, {0,3}
         };
         int[][] resultado = pieza.forma();
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], resultado[i]);
-        }
+        assertArrayEquals(esperado, resultado);
     }
 
     @Test
@@ -29,8 +27,6 @@ public class PieceStickTest {
             {3,0}
         };
         int[][] resultado = pieza.forma();
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], resultado[i]);
-        }
+        assertArrayEquals(esperado, resultado);
     }
 }

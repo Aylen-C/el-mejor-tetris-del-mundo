@@ -14,9 +14,7 @@ public class PieceTTest {
                    {1,1}
         };
         int[][] resultado = pieza.forma();
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], resultado[i]);
-        }
+        assertArrayEquals(esperado, resultado);
     }
 
     @Test
@@ -29,9 +27,7 @@ public class PieceTTest {
                   {2,2}
         };
         int[][] resultado = pieza.forma();
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], resultado[i]);
-        }
+        assertArrayEquals(esperado, resultado);
     }
 
     @Test
@@ -43,9 +39,7 @@ public class PieceTTest {
             {2,0}, {2,1}, {2,2}
         };
         int[][] resultado = pieza.forma();
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], resultado[i]);
-        }
+        assertArrayEquals(esperado, resultado);
     }
 
     @Test
@@ -58,12 +52,9 @@ public class PieceTTest {
             {2,0}
         };
         int[][] resultado = pieza.forma();
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], resultado[i]);
-        }
+        assertArrayEquals(esperado, resultado);
     }
 }
-
 
 
 

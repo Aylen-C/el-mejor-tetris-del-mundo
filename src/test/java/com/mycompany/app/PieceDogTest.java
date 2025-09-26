@@ -14,9 +14,7 @@ public class PieceDogTest {
                    {1,1}, {1,2}    
         };
         int[][] resultado = pieza.forma();
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], resultado[i]);
-        }
+        assertArrayEquals(esperado, resultado);
     }
 
     @Test
@@ -29,8 +27,6 @@ public class PieceDogTest {
             {2,0}
         };
         int[][] resultado = pieza.forma();
-        for (int i = 0; i < esperado.length; i++) {
-            assertArrayEquals(esperado[i], resultado[i]);
-        }
+        assertArrayEquals(esperado, resultado);
     }
 }
