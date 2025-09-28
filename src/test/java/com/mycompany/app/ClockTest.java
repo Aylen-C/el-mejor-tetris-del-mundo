@@ -46,13 +46,13 @@ public void BajaCompleto(){
     for(int tick=0; tick<38; tick++){
         if (clock.tick()){
         puedebajar = board.moveDown();
+        bajadas++;
         }
         if (!puedebajar){
             break;
         }
-        bajadas++;
     };
-    assertEquals(37,bajadas, "bajó 19 veces");
+    assertEquals(19,bajadas, "bajó 19 veces");
     assertFalse(puedebajar,"No puede seguir bajando");
     
 
