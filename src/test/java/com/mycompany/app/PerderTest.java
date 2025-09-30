@@ -53,10 +53,10 @@ public class PerderTest {
       }
     }
 
-    boolean pudoColocar = board.setPiezaActualSobreescribir(square.forma(), -1, 5);
-    // Verificar que no se pudo ingresar la pieza
-    assertFalse(pudoColocar, "No se puede ingresar la pieza, no hay mas lugar.");
-  }
+      boolean pudoColocar = board.intentaColocar(square.forma(), -1, 5);
+      // Verificar que no se pudo ingresar la pieza
+      assertFalse(pudoColocar, "No se puede ingresar la pieza, no hay mas lugar.");
+    }
 }
 
     
