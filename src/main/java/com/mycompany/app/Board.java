@@ -88,8 +88,9 @@ public class Board {
     // baja la pieza actual una fila si puede
     public boolean moveDown() {
         if (piezaActual == null) return false;
-        
         // verifica si la pieza puede bajar
+
+
         for (int i = 0; i < 4; i++) {// recorre cada bloque
             int filaActual = piezaActual[i][0];
             int columnaActual = piezaActual[i][1];
@@ -107,23 +108,5 @@ public class Board {
         }
         return true;
     }
-
-    public boolean setPiezaActualSobreescribir (int[][] nuevaPieza, int fila, int columna) { //se arreglo para colocar la pieza en las coordenadas iniciales
-        for (int i = 0; i < 4; i++) {
-           int a = nuevaPieza[i][0] + fila; 
-           int b = nuevaPieza[i][1] + columna;
-
-           if(a<0 || a>=filas || b<0 || b>=columnas){
-            return false; // no puede colocar la pieza
-        }
-
-              nuevaPieza[i][0] = a; 
-              nuevaPieza[i][1] = b;
-          }
-        this.piezaActual = nuevaPieza;
-        
-        return true; // pudo colocar la pieza
-
-    } 
 
 }
