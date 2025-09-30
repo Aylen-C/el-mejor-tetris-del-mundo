@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceT extends Piece {
+public class PieceT extends PieceBase {
     @Override
     public void rotateRight() {
         setPosicionActual(getPosicionActual() + 1);

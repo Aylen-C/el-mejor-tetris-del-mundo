@@ -116,7 +116,7 @@ public class Board {
         return true;
     }
 
-        public boolean setPiezaActualSobreescribir (int[][] nuevaPieza, int fila, int columna) { //se arreglo para colocar la pieza en las coordenadas iniciales
+        public boolean intentaColocar (int[][] nuevaPieza, int fila, int columna) { //se arreglo para colocar la pieza en las coordenadas iniciales
         for (int i = 0; i < 4; i++) {
            int a = nuevaPieza[i][0] + fila; 
            int b = nuevaPieza[i][1] + columna;
