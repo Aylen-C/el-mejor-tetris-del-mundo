@@ -15,8 +15,7 @@ public class ClockTest {
     Clock clock = new Clock();
     PieceSquare square = new PieceSquare();
     board.setPiezaActual(square.forma(), 0,0);// Coloca la pieza en la parte superior del tablero
-
-
+    
     int bajadas=0; 
 
     for(int tick=0; tick<4; tick++){

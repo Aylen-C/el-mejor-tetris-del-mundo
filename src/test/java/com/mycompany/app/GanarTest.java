@@ -4,13 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class GanarTest {
-
     @Test
     public void ganarPartida(){
         Board board = new Board(20, 10);
-        int lineasGanadoras = 3;       
-         
+        int lineasGanadoras = 3; 
 
+        
         // FILA 19 Y 18
         PieceSquare square1 = new PieceSquare();
         board.setPiezaActual(square1.forma(), 0, 0);
@@ -54,10 +53,9 @@ public class GanarTest {
         board.setPiezaActual(square10.forma(), 0, 8);
         while (board.moveDown()) {}
 
-        
-    
         assertEquals(4, board.lineCount());
         assertTrue(board.lineCount(lineasGanadoras), "Se gana al completar " + lineasGanadoras + " lineas");
     }
-    
 }
+    
+

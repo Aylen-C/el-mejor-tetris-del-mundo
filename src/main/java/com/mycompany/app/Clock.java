@@ -8,7 +8,7 @@ public class Clock {
         this.tick = 2;
         this.tickContador = 0;
     }
- 
+
     public boolean tick() {
         tickContador++;
         if (tickContador == tick) {  //Cuando llega a 2 (tickContador == tick), lo reseteás a 0 y devolvés true.

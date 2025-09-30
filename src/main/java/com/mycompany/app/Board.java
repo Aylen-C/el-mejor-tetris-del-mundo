@@ -81,7 +81,8 @@ public class Board {
         for (int i = 0; i < 4; i++) { // valida que la pieza no se salga del tablero
             int fila = pieza[i][0];
             int columna = pieza[i][1];
-            if (estaFuera(fila, columna)) return false;
+            if (estaFuera(fila, columna)) 
+            return false;
         }
 
         // colocar la pieza en el tablero y marca con un 1 si los lugares estan bien
@@ -98,12 +99,13 @@ public class Board {
             return -1;     // fuera del tablero
         return board[fila][columna];
     }
-
+ 
     // devuelve true si la celda está fuera del tablero
     private boolean estaFuera(int fila, int columna) {
         return (fila < 0 || fila >= filas || columna < 0 || columna >= columnas);
     }
     
+
     // baja la pieza actual una fila si puede
     public boolean moveDown() {
         if (piezaActual == null) return false;
