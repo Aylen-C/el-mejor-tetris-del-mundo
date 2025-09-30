@@ -56,7 +56,7 @@ public class GanarTest {
         board.setPiezaActual(square10.forma(), 0, 8);
         while (board.moveDown()) {}
     
-
+        assertEquals(4, board.lineCount());
         assertTrue(board.lineCount(lineasGanadoras), "Se gana al completar " + lineasGanadoras + " lineas");
     }
     

@@ -116,9 +116,8 @@ public class EliminarFilaTest{
         assertEquals(1, board.getCelda(18, 9), "Ocupa (fila 18, columna 9)");
         assertEquals(1, board.getCelda(19, 9), "Ocupa (fila 19, columna 9)");
 
-     
-        board.EliminarFila();
-        lineCount += board.EliminarFila(); 
+    
+        assertEquals(1, board.lineCount());
     
 
         assertEquals(0, board.getCelda(18, 0), "La fila 18 debe estar vacía en la columna 0");
