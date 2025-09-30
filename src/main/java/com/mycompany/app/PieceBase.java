@@ -14,6 +14,7 @@ public abstract class PieceBase implements IRotator {
             case 5: return new PieceDog();
             case 6: return new PieceDog2();
         }
+        return null;
     }
 
     private int posicionActual = 0;
