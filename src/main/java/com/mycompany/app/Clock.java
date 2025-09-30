@@ -18,14 +18,10 @@ public class Clock {
         return false;
     }
     
-    public void bajarFila(Board board){
-        while (true){
-            if (tick()){
-                boolean puedeBajar = board.moveDown();
-                 if (!puedeBajar) {
-                    break; // si no puede bajar más, sale del bucle
-                }
-            }
+    public boolean tick(Board board){
+        if (tick()){   // llama a tick
+            return board.moveDown(); // si puede bajar la pieza devuelve true, si no false
         }
+        return true; // si no es tiempo de bajar devuelve true para que el juego siga
     }
 }
