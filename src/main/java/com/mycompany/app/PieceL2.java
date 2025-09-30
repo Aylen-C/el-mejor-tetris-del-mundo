@@ -34,38 +34,4 @@ public class PieceL2 extends Piece {
         }
         return null;
     }
-
-    @Override
-    public boolean puedeDescender(String[][] tablero, int fila, int columna) {
-        int[][] formaActual = forma();
-        for (int[] coord : formaActual) {
-            int nuevaFila = fila + coord[0] + 1;
-            int nuevaColumna = columna + coord[1];
-            if (nuevaFila >= tablero.length || !tablero[nuevaFila][nuevaColumna].equals(".")) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public boolean puedeRotar(String[][] tablero, int fila, int columna) {
-        int originalPosicion = getPosicionActual();
-        int nuevaPosicion = originalPosicion + 1;
-        if (nuevaPosicion > 3) {
-            nuevaPosicion = 0;
-        }
-        setPosicionActual(nuevaPosicion);
-        int[][] formaRotada = forma();
-        setPosicionActual(originalPosicion);
-
-        for (int[] coord : formaRotada) {
-            int f = fila + coord[0];
-            int c = columna + coord[1];
-            if (f < 0 || f >= tablero.length || c < 0 || c >= tablero[0].length || !tablero[f][c].equals(".")) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

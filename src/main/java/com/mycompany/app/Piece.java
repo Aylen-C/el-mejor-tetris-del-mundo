@@ -53,7 +53,4 @@ public abstract class Piece implements IRotator {
     public abstract int[][] forma();  /* cada pieza implementa su propia forma y  
                                             la devuelve segun su posicion actual
                                             (0, 1, 2, 3)  */
-    public abstract boolean puedeDescender(String[][] tablero, int fila, int columna);
-    public abstract boolean puedeRotar(String[][] tablero, int fila, int columna);
-
 }
