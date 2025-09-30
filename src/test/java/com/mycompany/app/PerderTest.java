@@ -33,30 +33,30 @@ public class PerderTest {
   
 
 
-    @Test
-    public void noPuedeIngresarPieza(){
-      Board board = new Board(20, 10);
-      PieceSquare square = new PieceSquare();
-      Clock clock = new Clock();
+  @Test
+  public void noPuedeIngresarPieza(){
+    Board board = new Board(20, 10);
+    PieceSquare square = new PieceSquare();
+    Clock clock = new Clock();
 
-      for (int caidas=0; caidas<11; caidas++){
+    for (int caidas=0; caidas<11; caidas++){
       board.setPiezaActual(square.forma(), 0,5); 
 
       boolean puedeIngresar = true;
-        while (true) {
+      while (true) {
         if (clock.tick()) { // si el reloj indica que es tiempo de bajar la pieza
-            puedeIngresar = board.moveDown();
-            if (!puedeIngresar) {
-              break; // la pieza no puede bajar más, salir del bucle
-            }
+          puedeIngresar = board.moveDown();
+          if (!puedeIngresar) {
+            break; // la pieza no puede bajar más, salir del bucle
           }
         }
       }
-
-      boolean pudoColocar = board.setPiezaActualSobreescribir(square.forma(), -1, 5);
-      // Verificar que no se pudo ingresar la pieza
-      assertFalse(pudoColocar, "No se puede ingresar la pieza, no hay mas lugar.");
     }
+
+    boolean pudoColocar = board.setPiezaActualSobreescribir(square.forma(), -1, 5);
+    // Verificar que no se pudo ingresar la pieza
+    assertFalse(pudoColocar, "No se puede ingresar la pieza, no hay mas lugar.");
+  }
 }
 
     
