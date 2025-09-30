@@ -21,6 +21,7 @@ public class Board {
     }
 
     public int EliminarFila(){
+        int eliminadas = 0;
         for (int fila = filas - 1; fila >= 0; fila--) { // recorre las lineas del tablero
             boolean completa = true;
             for (int columna = 0; columna < columnas; columna++) {
@@ -39,9 +40,11 @@ public class Board {
                     board[0][c] = 0; // limpia la fila superior
                 }
                 lineCount++; // incrementa el contador de lineas eliminadas
+                eliminadas++;
+                fila++; // vuelve a verificar la misma fila ya que todas las filas han bajado
             }
-
         }
+        return eliminadas;
     }
 
     // elige una nueva pieza

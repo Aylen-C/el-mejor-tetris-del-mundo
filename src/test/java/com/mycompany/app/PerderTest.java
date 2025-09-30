@@ -45,7 +45,7 @@ public class PerderTest {
       board.setPiezaActual(square.forma(), 0,5); 
 
       boolean puedeIngresar = true;
-     while (true) {
+        while (true) {
         if (clock.tick()) { // si el reloj indica que es tiempo de bajar la pieza
             puedeIngresar = board.moveDown();
             if (!puedeIngresar) {
