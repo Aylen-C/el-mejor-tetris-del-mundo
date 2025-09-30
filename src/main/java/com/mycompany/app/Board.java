@@ -16,6 +16,18 @@ public class Board {
         this.piezaActual = null;
     }
 
+    public void moveLeft() {
+        for (int i = 0; i < 4; i++) {
+            piezaActual[i][1] -= 1; // mueve cada bloque una columna a la izquierda
+        }
+    }
+
+    public void moveRight() {
+        for (int i = 0; i < 4; i++) {
+            piezaActual[i][1] += 1; // mueve cada bloque una columna a la derecha
+        }
+    }
+
     public int lineCount() { // cuenta las lineas eliminadas
         return lineCount;
     }
@@ -58,7 +70,7 @@ public class Board {
             nuevaPieza[i][1] += columna;
         }
         this.piezaActual = nuevaPieza;
-    }
+ }
 
     public int[][] getPiezaActual() {
         return piezaActual;
