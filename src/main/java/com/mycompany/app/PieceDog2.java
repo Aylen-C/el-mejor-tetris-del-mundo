@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceDog2 extends Piece {
+public class PieceDog2 extends PieceBase {
     @Override
     public void rotateRight() {
         setPosicionActual(getPosicionActual() + 1);

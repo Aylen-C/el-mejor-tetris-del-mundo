@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public abstract class Piece implements IRotator {
+public abstract class PieceBase implements IRotator {
     private int posicionActual = 0;
 
     int getPosicionActual(){
