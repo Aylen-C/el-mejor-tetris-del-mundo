@@ -15,7 +15,7 @@ public class Board {
         this.board = new int [filas][columnas]; // inicializa con 0
         this.piezaActual = null;
     }
-
+    
     public void moveLeft() {
         for (int i = 0; i < 4; i++) {
             piezaActual[i][1] -= 1; // mueve cada bloque una columna a la izquierda
@@ -70,7 +70,7 @@ public class Board {
             nuevaPieza[i][1] += columna;
         }
         this.piezaActual = nuevaPieza;
- }
+    }
 
     public int[][] getPiezaActual() {
         return piezaActual;
