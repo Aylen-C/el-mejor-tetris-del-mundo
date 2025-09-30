@@ -57,8 +57,7 @@ public class GanarTest {
         while (board.moveDown()) {}
     
 
-        boolean gano = board.lineCount() >= lineasGanadoras;
-        assertTrue(gano, "Se gana al completar " + lineasGanadoras + " lineas");
+        assertTrue(board.lineCount(lineasGanadoras), "Se gana al completar " + lineasGanadoras + " lineas");
     }
     
 }

@@ -20,6 +20,10 @@ public class Board {
         return lineCount;
     }
 
+    public boolean lineCount(int n) {
+        return lineCount >= n;
+    }
+
     public int EliminarFila(){
         int eliminadas = 0;
         for (int fila = filas - 1; fila >= 0; fila--) { // recorre las lineas del tablero
