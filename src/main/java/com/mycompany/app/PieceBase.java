@@ -1,6 +1,21 @@
 package com.mycompany.app;
 
 public abstract class PieceBase implements IRotator {
+
+    public static PieceBase nuevaPieza() {
+        int cantidad = 7; // cantidad de piezas
+        int tipo= (int) (Math.random() * cantidad);
+        switch (tipo) {
+            case 0: return new PieceSquare();
+            case 1: return new PieceL();
+            case 2: return new PieceL2();
+            case 3: return new PieceT();
+            case 4: return new PieceStick();
+            case 5: return new PieceDog();
+            case 6: return new PieceDog2();
+        }
+    }
+
     private int posicionActual = 0;
 
     int getPosicionActual(){

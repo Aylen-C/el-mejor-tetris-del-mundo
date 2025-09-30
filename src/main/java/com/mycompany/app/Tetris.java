@@ -4,10 +4,10 @@ public class Tetris {
 
     private Board board;
     private Clock clock;
-    private PieceSquare PiezaActual;
+    private PieceBase PiezaActual;
 
     public Tetris() {
-        this(20, 10); // llama al constructor principal por defecto
+        this(20, 10); 
     }
 
     public Tetris(int filas, int columnas) {
@@ -18,7 +18,7 @@ public class Tetris {
     
     //el juego comienza cuando hay una pieza en el tablero
     public void start(){
-        this.PiezaActual = new PieceSquare();
+        this.PiezaActual = PieceBase.nuevaPieza();
         this.board.setPiezaActual(this.PiezaActual.forma(), 0, 0);
     }
 
@@ -49,7 +49,7 @@ public class Tetris {
         if (clock.tick() && PiezaActual != null){
             boolean puedebajar= board.moveDown();
             if (!puedebajar){
-                this. PiezaActual = new PieceSquare();
+                this.PiezaActual = PieceBase.nuevaPieza();
                 this.board.setPiezaActual(this.PiezaActual.forma(), 0, 0);
             }
         }
