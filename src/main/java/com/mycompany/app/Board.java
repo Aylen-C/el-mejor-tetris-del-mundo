@@ -20,7 +20,7 @@ public class Board {
         return lineCount;
     }
 
-    public void EliminarFila(){
+    public int EliminarFila(){
         for (int fila = filas - 1; fila >= 0; fila--) { // recorre las lineas del tablero
             boolean completa = true;
             for (int columna = 0; columna < columnas; columna++) {
@@ -107,6 +107,24 @@ public class Board {
             piezaActual[i][0]++; //baja una fila
         }
         return true;
+    }
+
+        public boolean setPiezaActualSobreescribir (int[][] nuevaPieza, int fila, int columna) { //se arreglo para colocar la pieza en las coordenadas iniciales
+        for (int i = 0; i < 4; i++) {
+           int a = nuevaPieza[i][0] + fila; 
+           int b = nuevaPieza[i][1] + columna;
+
+           if(a<0 || a>=filas || b<0 || b>=columnas){
+            return false; // no puede colocar la pieza
+        }
+
+              nuevaPieza[i][0] = a; 
+              nuevaPieza[i][1] = b;
+          }
+        this.piezaActual = nuevaPieza;
+        
+        return true; // pudo colocar la pieza
+
     }
 
 }
