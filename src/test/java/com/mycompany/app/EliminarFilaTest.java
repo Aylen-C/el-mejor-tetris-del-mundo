@@ -12,32 +12,28 @@ public class EliminarFilaTest{
         PieceSquare square1 = new PieceSquare();
         board.setPiezaActual(square1.forma(), 0, 0);
         while (board.moveDown()) {}
+            assertEquals(1, board.getCelda(19, 0), "La fila 19 debe estar completa");
 
         PieceSquare square2 = new PieceSquare();
         board.setPiezaActual(square2.forma(), 0, 2);
         while (board.moveDown()) {}
+            assertEquals(1, board.getCelda(19, 2), "La fila 19 debe estar completa");
 
         PieceSquare square3 = new PieceSquare();
         board.setPiezaActual(square3.forma(), 0, 4);
         while (board.moveDown()) {}
+        assertEquals(1, board.getCelda(19, 4), "La fila 19 debe estar completa");
 
         PieceSquare square4 = new PieceSquare();
         board.setPiezaActual(square4.forma(), 0, 6);
         while (board.moveDown()) {}
+        assertEquals(1, board.getCelda(19, 6), "La fila 19 debe estar completa");
 
         PieceSquare square5 = new PieceSquare();
         board.setPiezaActual(square5.forma(), 0, 8);
         while (board.moveDown()) {}
 
-        assertEquals(1, board.getCelda(19, 0), "La fila 19 debe estar completa");
-        assertEquals(1, board.getCelda(19, 2), "La fila 19 debe estar completa");
-        assertEquals(1, board.getCelda(19, 4), "La fila 19 debe estar completa");
-        assertEquals(1, board.getCelda(19, 6), "La fila 19 debe estar completa");
-        assertEquals(1, board.getCelda(19, 8), "La fila 19 debe estar completa");
-
-        board.EliminarFila();
-        board.EliminarFila();
-        int lineCount = board.lineCount();
+        assertEquals(2, board.lineCount());  // directo y limpio
 
         
         assertEquals(0, board.getCelda(19, 0), "La fila 19 debe estar vacía");
