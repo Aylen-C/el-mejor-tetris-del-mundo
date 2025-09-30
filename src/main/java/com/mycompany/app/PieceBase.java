@@ -51,6 +51,6 @@ public abstract class PieceBase implements IRotator {
     }
     
     public abstract int[][] forma();  /* cada pieza implementa su propia forma y  
-                                            la devuelve segun su posicion actual
-                                            (0, 1, 2, 3)  */
+                                        la devuelve segun su posicion actual
+                                        (0, 1, 2, 3)  */
 }
